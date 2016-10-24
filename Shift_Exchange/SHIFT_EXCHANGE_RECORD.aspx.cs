@@ -745,13 +745,99 @@ namespace longtermcare.NursingPlan.Shift_Exchange
         }
         */
         
+        protected void btn_recent_Click(object sender, ImageClickEventArgs e)
+        {
+            sqlRecent.connect(connection_id);
+            int selectvalue = 1;
+            TabContainer1.Visible = true;
+            TabContainer1.ScrollBars = System.Web.UI.WebControls.ScrollBars.Vertical;
+            DataSet FormSet = sqlRecent.ReturnForm();
 
-        
-        
-        
-        
-        
-        
-        
+            TabPanel tabid = new TabPanel();
+            tabid.HeaderText = "此住民最近三筆照護記錄";
+            chklp[0] = new CheckBoxList();
+            chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Vertical;
+            chklp[0].RepeatLayout = RepeatLayout.Table;
+
+            System.Web.UI.WebControls.Label Description1 = new System.Web.UI.WebControls.Label();
+            Description1.Text = "此住民目前無最近照護記錄";
+            Description1.ForeColor = System.Drawing.Color.Red;
+            Description1.Font.Size = 10;
+            Description1.Font.Bold = true;
+
+            if (FormSet.Tables.Count > 0)
+            {
+                int total_count = 0;
+
+                foreach(DataRow row in FormSet.Tables[0].Rows)
+                {
+                    DataSet Data_Set = sqlRecent.ReturnData(row["SELECT_COMM_COL"].ToString(), row["SELECT_COMM_TABLE"].ToString(), row["SELECT_COMM_ORDERBY_DATE"].ToString(), row["NO_STRING"].ToString(), ip_no, sqlTime.DateSplitSlash(txtShowDate.Text));
+                    if (Data_Set.Tables[0].Rows.Count > 0)
+                    {
+                        string[] table_name = row["SELECT_COMM_COL_NAME"].ToString().Split(',');
+                        string[] table = new string[table_name.Length];
+                        string record = "●" + row["FORM_NAME"].ToString();
+                        int count = 0;
+
+                        for(int i = 0; i < table.Length; i++)
+                        {
+                            table[i] = Data_Set.Tables[0].Rows[0][i].ToString().Trim();
+                            if(row["SELECT_COMM_ORDERBY_DATE"].ToString().Split(',').Length != 2)
+                            {
+                                if (i == 0)
+                                {
+                                    table[i] = sqlTime.DateAddSlash(table[i]);
+                                    record += "【" + table_name[i] + ":" + table[i] + "】</br>";
+                                }else
+                                {
+                                    //判斷欄位是否有值
+                                    if (!table[i].Trim().Equals(""))
+                                    {
+                                        record += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + table_name[i] + ":" + table[i] + "</br>";
+                                        count++;
+                                    }
+                                }
+                            }else
+                            {
+                                if (i == 0)
+                                {
+                                    table[i] = sqlTime.DateAddSlash(table[i]);
+                                    record += "【" + table_name[i] + ":" + table[i] + "】</br>";
+                                }
+                                else
+                                {
+                                    //判斷欄位是否有值
+                                    if (!table[i].Trim().Equals(""))
+                                    {
+                                        record += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + table_name[i] + ":" + table[i] + "</br>";
+                                        count++;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        if(count > 0)
+                        {
+                            chklp[0].Items.Add(record);
+                            chklp[0].DataBind();
+                            total_count++;
+                        }
+                    }
+                    Data_Set.Dispose();
+                }
+                
+                Description1.Visible = total_count <= 0 ? true : false;
+            }
+            FormSet.Dispose();
+
+            tabid.Controls.Add(new LiteralControl("<" + "br" + ">"));
+            tabid.Controls.Add(chklp[0]);
+            tabid.Controls.Add(Description1);
+            TabContainer1.Controls.Add(tabid);
+            TabContainer1.ActiveTabIndex = selectvalue;
+        }
+
+
+
     }
 }
