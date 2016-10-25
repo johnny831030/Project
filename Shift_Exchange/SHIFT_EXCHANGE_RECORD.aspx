@@ -943,6 +943,7 @@ BACKtoTOP-STOP-->
         </div>
         <asp:UpdatePanel ID="UpdatePanel12" runat="server">
         <ContentTemplate>
+            <asp:Label ID="test" runat="server"></asp:Label>
         </ContentTemplate>
     </asp:UpdatePanel>
         <div class="toggler">

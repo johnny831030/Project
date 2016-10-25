@@ -745,13 +745,14 @@ namespace longtermcare.NursingPlan.Shift_Exchange
         }
         */
         
+        
         protected void btn_recent_Click(object sender, ImageClickEventArgs e)
         {
             sqlRecent.connect(connection_id);
             int selectvalue = 1;
             TabContainer1.Visible = true;
             TabContainer1.ScrollBars = System.Web.UI.WebControls.ScrollBars.Vertical;
-            DataSet FormSet = sqlRecent.ReturnForm();
+            DataSet FormSet = sqlRecent.Return3Form();
 
             TabPanel tabid = new TabPanel();
             tabid.HeaderText = "此住民最近三筆照護記錄";
@@ -765,30 +766,36 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             Description1.Font.Size = 10;
             Description1.Font.Bold = true;
 
+            
+
             if (FormSet.Tables.Count > 0)
             {
                 int total_count = 0;
+                ArrayList array = new ArrayList();
 
-                foreach(DataRow row in FormSet.Tables[0].Rows)
+                foreach (DataRow row in FormSet.Tables[0].Rows)
                 {
                     DataSet Data_Set = sqlRecent.ReturnData(row["SELECT_COMM_COL"].ToString(), row["SELECT_COMM_TABLE"].ToString(), row["SELECT_COMM_ORDERBY_DATE"].ToString(), row["NO_STRING"].ToString(), ip_no, sqlTime.DateSplitSlash(txtShowDate.Text));
+                    
                     if (Data_Set.Tables[0].Rows.Count > 0)
                     {
                         string[] table_name = row["SELECT_COMM_COL_NAME"].ToString().Split(',');
                         string[] table = new string[table_name.Length];
                         string record = "●" + row["FORM_NAME"].ToString();
                         int count = 0;
-
+                        
                         for(int i = 0; i < table.Length; i++)
                         {
                             table[i] = Data_Set.Tables[0].Rows[0][i].ToString().Trim();
+                           
                             if(row["SELECT_COMM_ORDERBY_DATE"].ToString().Split(',').Length != 2)
                             {
                                 if (i == 0)
                                 {
                                     table[i] = sqlTime.DateAddSlash(table[i]);
                                     record += "【" + table_name[i] + ":" + table[i] + "】</br>";
-                                }else
+                                }
+                                else
                                 {
                                     //判斷欄位是否有值
                                     if (!table[i].Trim().Equals(""))
@@ -801,8 +808,10 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                             {
                                 if (i == 0)
                                 {
+                                    array.Add(table[0]);
                                     table[i] = sqlTime.DateAddSlash(table[i]);
                                     record += "【" + table_name[i] + ":" + table[i] + "】</br>";
+                                    //test.Text += table_name[0] + array[0] + "</br>";
                                 }
                                 else
                                 {
@@ -824,6 +833,13 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                         }
                     }
                     Data_Set.Dispose();
+                }
+
+                array.Sort();
+
+                for(int i = array.Count - 1; i >=0 ; i--)
+                {
+                    test.Text += array[i] + "</br>";
                 }
                 
                 Description1.Visible = total_count <= 0 ? true : false;
