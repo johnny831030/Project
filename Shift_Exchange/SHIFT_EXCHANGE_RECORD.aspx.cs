@@ -752,7 +752,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             int selectvalue = 1;
             TabContainer1.Visible = true;
             TabContainer1.ScrollBars = System.Web.UI.WebControls.ScrollBars.Vertical;
-            DataSet FormSet = sqlRecent.Return3Form();
+            DataSet FormSet = sqlRecent.ReturnForm();
 
             TabPanel tabid = new TabPanel();
             tabid.HeaderText = "此住民最近三筆照護記錄";
@@ -765,22 +765,12 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             Description1.ForeColor = System.Drawing.Color.Red;
             Description1.Font.Size = 10;
             Description1.Font.Bold = true;
-<<<<<<< HEAD
 
-            
-
-=======
-            
->>>>>>> 日期排列(僅有時間的紀錄)
             if (FormSet.Tables.Count > 0)
             {
                 int total_count = 0;
                 ArrayList array = new ArrayList();
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 日期排列(僅有時間的紀錄)
                 foreach (DataRow row in FormSet.Tables[0].Rows)
                 {
                     DataSet Data_Set = sqlRecent.ReturnData(row["SELECT_COMM_COL"].ToString(), row["SELECT_COMM_TABLE"].ToString(), row["SELECT_COMM_ORDERBY_DATE"].ToString(), row["NO_STRING"].ToString(), ip_no, sqlTime.DateSplitSlash(txtShowDate.Text));
@@ -792,16 +782,11 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                         string record = "●" + row["FORM_NAME"].ToString();
                         int count = 0;
 
-<<<<<<< HEAD
                         //製作二維陣列 (前面存日期、後面存資料)
                         string[,] detail =new string [1,2];
 
                         //date 存尚未放"/"的日期
                         double date = 0;
-=======
-                        string[,] detail =new string [2,1];
-                        double date=0;
->>>>>>> 日期排列(僅有時間的紀錄)
                         
                         for (int i = 0; i < table.Length; i++)
                         {
@@ -828,11 +813,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                             {
                                 if (i == 0)
                                 {
-<<<<<<< HEAD
-                                    array.Add(table[0]);
-=======
                                     date = Convert.ToInt32(table[i]);
->>>>>>> 日期排列(僅有時間的紀錄)
                                     table[i] = sqlTime.DateAddSlash(table[i]);
                                     record += "【" + table_name[i] + ":" + table[i] + "】</br>";
                                     //test.Text += table_name[0] + array[0] + "</br>";
@@ -854,26 +835,19 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                             //chklp[0].Items.Add(record);
                             //chklp[0].DataBind();
                             total_count++;
-<<<<<<< HEAD
                             
-                            //分兩種資料，分別放進 detail 二維陣列中
+                            // 分兩種資料，分別放進 detail 二維陣列中
                             detail[0, 0] = date.ToString();
                             detail[0, 1] = record;
                             
                             // 轉存至 array
                             array.Add(detail[0, 0] + detail[0, 1]);
-=======
-
-                            detail[0, 0] = date.ToString();
-                            detail[1, 0] = record;
-                            array.Add(detail[0, 0] + detail[1, 0]);
->>>>>>> 日期排列(僅有時間的紀錄)
                         }
                     }
                     Data_Set.Dispose();
                 }
 
-<<<<<<< HEAD
+
                 // 利用ArrayList的功能，由日期由小到大的排序
                 array.Sort();
 
@@ -883,20 +857,11 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                     // 取日期後面的資料
                     string cut_result = array[i].ToString().Substring(8);
                     
-                    //轉存進CheckboxList
+                    // 轉存進CheckboxList
                     chklp[0].Items.Add(cut_result);
                     chklp[0].DataBind();
                 }
 
-=======
-                array.Sort();
-
-                for(int i = array.Count - 1; i >= array.Count - 3; i--)
-                {
-                    test.Text += array[i] + "</br>";
-                }
-                
->>>>>>> 日期排列(僅有時間的紀錄)
                 Description1.Visible = total_count <= 0 ? true : false;
             }
             FormSet.Dispose();
