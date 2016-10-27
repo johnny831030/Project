@@ -752,7 +752,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             int selectvalue = 1;
             TabContainer1.Visible = true;
             TabContainer1.ScrollBars = System.Web.UI.WebControls.ScrollBars.Vertical;
-            DataSet FormSet = sqlRecent.Return3Form();
+            DataSet FormSet = sqlRecent.ReturnForm();
 
             TabPanel tabid = new TabPanel();
             tabid.HeaderText = "此住民最近三筆照護記錄";
@@ -765,14 +765,12 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             Description1.ForeColor = System.Drawing.Color.Red;
             Description1.Font.Size = 10;
             Description1.Font.Bold = true;
-
             
-
             if (FormSet.Tables.Count > 0)
             {
                 int total_count = 0;
                 ArrayList array = new ArrayList();
-
+                
                 foreach (DataRow row in FormSet.Tables[0].Rows)
                 {
                     DataSet Data_Set = sqlRecent.ReturnData(row["SELECT_COMM_COL"].ToString(), row["SELECT_COMM_TABLE"].ToString(), row["SELECT_COMM_ORDERBY_DATE"].ToString(), row["NO_STRING"].ToString(), ip_no, sqlTime.DateSplitSlash(txtShowDate.Text));
@@ -783,8 +781,11 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                         string[] table = new string[table_name.Length];
                         string record = "●" + row["FORM_NAME"].ToString();
                         int count = 0;
+
+                        string[,] detail =new string [2,1];
+                        double date=0;
                         
-                        for(int i = 0; i < table.Length; i++)
+                        for (int i = 0; i < table.Length; i++)
                         {
                             table[i] = Data_Set.Tables[0].Rows[0][i].ToString().Trim();
                            
@@ -792,6 +793,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                             {
                                 if (i == 0)
                                 {
+                                    date = Convert.ToInt32(table[i]);
                                     table[i] = sqlTime.DateAddSlash(table[i]);
                                     record += "【" + table_name[i] + ":" + table[i] + "】</br>";
                                 }
@@ -808,10 +810,9 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                             {
                                 if (i == 0)
                                 {
-                                    array.Add(table[0]);
+                                    date = Convert.ToInt32(table[i]);
                                     table[i] = sqlTime.DateAddSlash(table[i]);
                                     record += "【" + table_name[i] + ":" + table[i] + "】</br>";
-                                    //test.Text += table_name[0] + array[0] + "</br>";
                                 }
                                 else
                                 {
@@ -830,6 +831,10 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                             chklp[0].Items.Add(record);
                             chklp[0].DataBind();
                             total_count++;
+
+                            detail[0, 0] = date.ToString();
+                            detail[1, 0] = record;
+                            array.Add(detail[0, 0] + detail[1, 0]);
                         }
                     }
                     Data_Set.Dispose();
@@ -837,7 +842,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
 
                 array.Sort();
 
-                for(int i = array.Count - 1; i >=0 ; i--)
+                for(int i = array.Count - 1; i >= array.Count - 3; i--)
                 {
                     test.Text += array[i] + "</br>";
                 }
