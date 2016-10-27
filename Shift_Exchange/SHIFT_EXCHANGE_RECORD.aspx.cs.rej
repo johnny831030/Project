@@ -1,0 +1,34 @@
+diff a/Shift_Exchange/SHIFT_EXCHANGE_RECORD.aspx.cs b/Shift_Exchange/SHIFT_EXCHANGE_RECORD.aspx.cs	(rejected hunks)
+@@ -783,8 +781,11 @@
+                         string[] table = new string[table_name.Length];
+                         string record = "●" + row["FORM_NAME"].ToString();
+                         int count = 0;
++
++                        string[,] detail =new string [2,1];
++                        double date=0;
+                         
+-                        for(int i = 0; i < table.Length; i++)
++                        for (int i = 0; i < table.Length; i++)
+                         {
+                             table[i] = Data_Set.Tables[0].Rows[0][i].ToString().Trim();
+                            
+@@ -830,6 +831,10 @@
+                             chklp[0].Items.Add(record);
+                             chklp[0].DataBind();
+                             total_count++;
++
++                            detail[0, 0] = date.ToString();
++                            detail[1, 0] = record;
++                            array.Add(detail[0, 0] + detail[1, 0]);
+                         }
+                     }
+                     Data_Set.Dispose();
+@@ -837,7 +842,7 @@
+ 
+                 array.Sort();
+ 
+-                for(int i = array.Count - 1; i >=0 ; i--)
++                for(int i = array.Count - 1; i >= array.Count - 3; i--)
+                 {
+                     test.Text += array[i] + "</br>";
+                 }
