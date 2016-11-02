@@ -32,7 +32,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
         {
             Session.Contents.Remove("tab_state_SHIFT_EXCHANGE_RECORD");
         }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["H_id"] == null)
@@ -65,7 +65,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                 ip_no = Session["ipno"].ToString();
                 sstr_ipno.Text = Session["ipno"].ToString();
                 this.Form.Attributes.Add("autocomplete", "off");
-            //this.Page.Form.DefaultButton = "ContentPlaceHolder1$btnSearch";
+                //this.Page.Form.DefaultButton = "ContentPlaceHolder1$btnSearch";
                 //權限檢查
                 //查詢權限表此人在此表單的權限並寫入至session
                 //只有查詢權限
@@ -96,28 +96,28 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                     State2();//有新增權限時進入狀態2的按鈕狀態程序
                 }
 
-              if (!IsPostBack)
-              {
-                //setDateControl();
-                //Bind GridView
-                //GridView1.DataSource = BindGridData(txtS_DATE.Text, txtE_DATE.Text, ip_no);
-                //GridView1.DataBind();
-                  DateTimeShow();
-                
-              }
+                if (!IsPostBack)
+                {
+                    //setDateControl();
+                    //Bind GridView
+                    //GridView1.DataSource = BindGridData(txtS_DATE.Text, txtE_DATE.Text, ip_no);
+                    //GridView1.DataBind();
+                    DateTimeShow();
+
+                }
             }
             else
             {
                 Response.Write("<script>alert('請先點選住民以便新增'); location.href='../../FNursingPlan.aspx'; </script>");
                 //ScriptManager.RegisterClientScriptBlock(UpdatePanel1, typeof(UpdatePanel), "test", "alert('請先點選住民以便新增');location.href='../../FNursingPlan.aspx';", true);
             }
-            
+
             //交班紀錄新增
-            
+
 
         }
 
-        
+
         //日期時間驗證(javascript取代)
         protected void txtShowDate_TextChanged(object sender, EventArgs e)
         {
@@ -333,7 +333,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                 lblShowErrMsg.Text = "日期格式錯誤";
                 ScriptManager.RegisterClientScriptBlock(UpdatePanel2, typeof(UpdatePanel), "Message", "runEffect1();", true);
                 //CurrentlyState();
-            } 
+            }
         }
         //列印
         protected void btnPrint_Click(object sender, EventArgs e)
@@ -341,12 +341,12 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             try
             {
                 string connection_id = sstr_hid.Text;
-                string nowdate = sqlTime.datetime().Substring(0,8);
+                string nowdate = sqlTime.datetime().Substring(0, 8);
                 DataTable dt_ip_thisserecord = sqlShiftExchange.SearchIPThisSERecord(sstr_ipno.Text, sstr_account.Text, nowdate, connection_id);
                 string r_date = dt_ip_thisserecord.Rows[0][6].ToString().Substring(0, 4) + "/" + dt_ip_thisserecord.Rows[0][6].ToString().Substring(4, 2) + "/" + dt_ip_thisserecord.Rows[0][6].ToString().Substring(6, 2);
                 string r_time = dt_ip_thisserecord.Rows[0][7].ToString();
                 string r_user = sqlShiftExchange.SearchA_user(dt_ip_thisserecord.Rows[0][8].ToString(), connection_id);
-                string content = dt_ip_thisserecord.Rows[0][2].ToString().Replace("<br />","\n");
+                string content = dt_ip_thisserecord.Rows[0][2].ToString().Replace("<br />", "\n");
                 content = content.Replace("&nbsp;", " ");
                 content = SpecialCharactersTransform.strtosc(content);
                 string print_time = sqlTime.hourminute();
@@ -441,7 +441,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                 cell[6].GrayFill = 0.9f;
                 cell[7] = new PdfPCell(new iTextSharp.text.Paragraph(content + "\n\n\n\n\n\n\n\n\n", ChFont));
                 cell[7].Colspan = 5;
-                
+
                 for (int i = 0; i < cell.Length; i++)
                 {
                     table.AddCell(cell[i]);
@@ -744,8 +744,8 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             txtContent.Text += b.Text;
         }
         */
-        
-        
+
+
         protected void btn_recent_Click(object sender, ImageClickEventArgs e)
         {
             sqlRecent.connect(connection_id);
@@ -765,7 +765,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             Description1.ForeColor = System.Drawing.Color.Red;
             Description1.Font.Size = 10;
             Description1.Font.Bold = true;
-            
+
             if (FormSet.Tables.Count > 0)
             {
                 int total_count = 0;
@@ -773,8 +773,8 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                 foreach (DataRow row in FormSet.Tables[0].Rows)
                 {
                     DataSet Data_Set = sqlRecent.Return3Data(row["SELECT_COMM_COL"].ToString(), row["SELECT_COMM_TABLE"].ToString(), row["SELECT_COMM_ORDERBY_DATE"].ToString(), row["NO_STRING"].ToString(), ip_no, sqlTime.DateSplitSlash(txtShowDate.Text));
-                    
-                    for (int j = 0; j < 3; j++)
+
+                    for (int j = 0; j < Data_Set.Tables[0].Rows.Count; j++)
                     {
                         if (Data_Set.Tables[0].Rows.Count > 0)
                         {
@@ -786,7 +786,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
 
                             for (int i = 0; i < table.Length; i++)
                             {
-                                table[i] = Data_Set.Tables[0].Rows[0][i].ToString().Trim();
+                                table[i] = Data_Set.Tables[0].Rows[j][i].ToString().Trim();
 
                                 if (row["SELECT_COMM_ORDERBY_DATE"].ToString().Split(',').Length != 2)
                                 {
@@ -824,18 +824,19 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                                 }
                             }
 
+
                             if (count > 0)
                             {
                                 chklp[0].Items.Add(record);
-                                //test.Text += record;
                                 chklp[0].DataBind();
                                 total_count++;
                             }
-
-                            //Data_Set.Dispose();
+                            
                         }
                     }
+                    Data_Set.Dispose();
                 }
+
                 Description1.Visible = total_count <= 0 ? true : false;
             }
             FormSet.Dispose();
