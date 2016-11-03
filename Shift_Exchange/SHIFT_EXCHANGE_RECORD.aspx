@@ -290,6 +290,7 @@
         }
     </style>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!--BACKtoTOP-START
     <a style="display: scroll; position: fixed; bottom: 0px; right: 200px;" href="#"
@@ -857,59 +858,57 @@ BACKtoTOP-STOP-->
         </asp:UpdatePanel>
     </div>
         <div id="phrase" runat="server" style="display: none; cursor: default;">
-        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-            <ContentTemplate>
-                <table style="width: 100%;">
-                    <tr align="center">
-                        <td colspan="2" align="center">
-                            <asp:Label ID="lblPhraseTitle" runat="server" ForeColor="Black" Font-Bold="true"
-                                Font-Size="Medium" Font-Names="新細明體" Text="雜項交班紀錄單常用片語"></asp:Label>
-                        </td>
-                        <td align="right">
-                            <asp:ImageButton ID="ImageButton2" runat="server" Height="32px" ImageUrl="~/Image/WebImage/633855842283694909.jpg"
-                                Width="31px" OnClientClick="return Exit();" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="left">
-                            <asp:Panel ID="Panel3" runat="server">
-                                <table style="width: 100%;">
-                                    <tr>
-                                        <td>
-                                            &nbsp;
-                                        </td>
-                                        <td>
-                                            &nbsp;
-                                            <asp:TabContainer ID="TabContainerPHRASE" runat="server" ActiveTabIndex="0" Width="410px">
-                                                <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="" Visible="false">
-                                                </asp:TabPanel>
-                                            </asp:TabContainer>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </asp:Panel>
-                            <br />
-                        </td>
-                        <td align="right" valign="bottom">
-                            &nbsp;&nbsp;<asp:Button ID="btnSENT_SER_Content" runat="server" Text="送出" OnClientClick="return phrase_btnSENT_SER_Content();" />
-                        </td>
-                    </tr>
-                </table>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
+            <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr align="center">
+                            <td colspan="2" align="center">
+                                <asp:Label ID="lblPhraseTitle" runat="server" ForeColor="Black" Font-Bold="true"
+                                    Font-Size="Medium" Font-Names="新細明體" Text="雜項交班紀錄單常用片語"></asp:Label>
+                            </td>
+                            <td align="right">
+                                <asp:ImageButton ID="ImageButton2" runat="server" Height="32px" ImageUrl="~/Image/WebImage/633855842283694909.jpg"
+                                    Width="31px" OnClientClick="return Exit();" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left">
+                                <asp:Panel ID="Panel3" runat="server">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                                <asp:TabContainer ID="TabContainerPHRASE" runat="server" ActiveTabIndex="0" Width="410px">
+                                                    <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="" Visible="false">
+                                                    </asp:TabPanel>
+                                                </asp:TabContainer>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </asp:Panel>
+                                <br />
+                            </td>
+                            <td align="right" valign="bottom">
+                                &nbsp;&nbsp;<asp:Button ID="btnSENT_SER_Content" runat="server" Text="送出" OnClientClick="return phrase_btnSENT_SER_Content();" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
         <div id="recent" runat="server" style="display: none; cursor: default;">
             <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                 <ContentTemplate>
                     <table style="width: 100%;">
                         <tr align="center">
                             <td colspan="2" align="center">
-                                <asp:Label ID="Label6" runat="server" ForeColor="Black" Font-Bold="true" Font-Size="Medium"
-                                    Font-Names="新細明體" Text="住民近況"></asp:Label>
+                                <asp:Label ID="Label6" runat="server" ForeColor="Black" Font-Bold="true" Font-Size="Medium" Font-Names="新細明體" Text="住民近況"></asp:Label>
                             </td>
                             <td align="right">
-                                <asp:ImageButton ID="ImageButton1" runat="server" Height="32px" ImageUrl="~/Image/WebImage/633855842283694909.jpg"
-                                    Width="31px" OnClientClick="return Exit();" />
+                                <asp:ImageButton ID="ImageButton1" runat="server" Height="32px" ImageUrl="~/Image/WebImage/633855842283694909.jpg" Width="31px" OnClientClick="return Exit();" />
                             </td>
                         </tr>
                         <tr>
@@ -922,8 +921,7 @@ BACKtoTOP-STOP-->
                                             </td>
                                             <td>
                                                 &nbsp;
-                                                <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="450px"
-                                                    Height="300px" ScrollBars="Vertical">
+                                                <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="450px" Height="300px" ScrollBars="Vertical">
                                                     <asp:TabPanel ID="TabPanel3" runat="server" HeaderText="" Visible="false">
                                                     </asp:TabPanel>
                                                 </asp:TabContainer>
@@ -942,10 +940,9 @@ BACKtoTOP-STOP-->
             </asp:UpdatePanel>
         </div>
         <asp:UpdatePanel ID="UpdatePanel12" runat="server">
-        <ContentTemplate>
-            <asp:Label ID="test" runat="server"></asp:Label>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+            <ContentTemplate>   
+            </ContentTemplate>
+        </asp:UpdatePanel>
         <div class="toggler">
         <div id="effect" class="ui-widget-content">
             <asp:UpdatePanel ID="UpdatePanel19" runat="server">
@@ -967,10 +964,28 @@ BACKtoTOP-STOP-->
                 </div>
             </div>
         <asp:UpdatePanel ID="UpdatePanelErrMsg" runat="server">
-        <ContentTemplate>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+            <ContentTemplate>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
+
+    <!-- 開合式選單 測試版 -->
+    <div>
+       <ul id="Menu">
+           <li><h2 id="menu1">AAAA</h2>
+                <ul>
+                    <li>AAAA</li>
+                </ul>
+            </li>
+            <li><h2 id="menu2">BBBB</h2>
+                <ul>
+                    <li><a href="#">BBBB</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    
     <script type="text/javascript">
         function txtShowDate_Changed() {
             var txtdate = document.getElementById("ContentPlaceHolder1_txtShowDate").value;
@@ -1012,6 +1027,21 @@ BACKtoTOP-STOP-->
             function () {
                 setTimeout($.blockUI, 0);
             }).ajaxStop($.unblockUI);
+
+            // 開合式選單 測試版
+            var curr = '';
+            $('#Menu h2').click(function () {
+                if ($(this).attr("id") != curr) {
+                    $('#Menu ul').slideUp();
+                    $(this).next().slideDown(1000);
+                    curr = $(this).attr("id");
+                } else {
+                    $(this).next().slideUp(300);
+                    curr = '';
+                }
+            }).css("cursor", "pointer");
+             $('#Menu h2').eq(0).click();
+
         });
 
         function showWaitPanel_PreSERecord() {
@@ -1187,5 +1217,6 @@ BACKtoTOP-STOP-->
     </script>
 
 </asp:Content>
+     
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 </asp:Content>

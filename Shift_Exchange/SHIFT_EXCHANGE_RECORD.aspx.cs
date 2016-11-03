@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using AjaxControlToolkit;
 using System.Data;
 using System.Drawing;
+using System.Text;
 
 namespace longtermcare.NursingPlan.Shift_Exchange
 {
@@ -113,8 +114,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             }
 
             //交班紀錄新增
-
-
+            
         }
 
 
@@ -744,8 +744,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             txtContent.Text += b.Text;
         }
         */
-
-
+        
         protected void btn_recent_Click(object sender, ImageClickEventArgs e)
         {
             sqlRecent.connect(connection_id);
@@ -778,7 +777,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                     {
                         if (Data_Set.Tables[0].Rows.Count > 0)
                         {
-
+                            
                             string[] table_name = row["SELECT_COMM_COL_NAME"].ToString().Split(',');
                             string[] table = new string[table_name.Length];
                             string record = "●" + row["FORM_NAME"].ToString();
@@ -847,8 +846,6 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             TabContainer1.Controls.Add(tabid);
             TabContainer1.ActiveTabIndex = selectvalue;
         }
-
-
-
+        
     }
 }
