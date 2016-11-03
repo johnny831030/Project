@@ -36,6 +36,15 @@ namespace longtermcare.NursingPlan.Shift_Exchange
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // 開合式選單 後端測試版
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<ul id='tabs'>");
+            sb.Append("<li><h2 id='tab'>BBBB</h2><ul><li>BBBB</li></ul></li>");
+            sb.Append("</ul>");
+
+            Literal1.Text = sb.ToString();
+            
             if (Session["H_id"] == null)
             {
                 HttpCookie myH_id_Cookie = Request.Cookies["H_id"];
@@ -765,6 +774,8 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             Description1.Font.Size = 10;
             Description1.Font.Bold = true;
 
+            System.Web.UI.WebControls.Literal Literal2 = new System.Web.UI.WebControls.Literal();
+
             if (FormSet.Tables.Count > 0)
             {
                 int total_count = 0;
@@ -843,8 +854,18 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             tabid.Controls.Add(new LiteralControl("<" + "br" + ">"));
             tabid.Controls.Add(chklp[0]);
             tabid.Controls.Add(Description1);
+
+            // 開合式選單 框框測試版
+            StringBuilder test = new StringBuilder();
+            test.Append("<ul id='tests'>");
+            test.Append("<li><h2 id='test'>BBBB</h2><ul><li>BBBB</li></ul></li>");
+            test.Append("</ul>");
+            Literal2.Text = test.ToString();
+            tabid.Controls.Add(Literal2);
+            
             TabContainer1.Controls.Add(tabid);
             TabContainer1.ActiveTabIndex = selectvalue;
+
         }
         
     }
