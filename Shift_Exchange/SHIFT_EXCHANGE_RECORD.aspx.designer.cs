@@ -625,15 +625,6 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         protected global::System.Web.UI.UpdatePanel UpdatePanel12;
         
         /// <summary>
-        /// test 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label test;
-        
-        /// <summary>
         /// UpdatePanel19 控制項。
         /// </summary>
         /// <remarks>
@@ -677,14 +668,5 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanelErrMsg;
-        
-        /// <summary>
-        /// Literal1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
     }
 }

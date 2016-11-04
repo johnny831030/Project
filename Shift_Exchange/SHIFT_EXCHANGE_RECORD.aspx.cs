@@ -30,6 +30,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
         CheckBoxList[] chklp_p = new CheckBoxList[1000];
 
         CheckBoxList[] chkli = new CheckBoxList[1000];
+        TabPanel[] tabid = new TabPanel[10];
 
         //離開網頁時清除狀態轉換的Session
         protected void Page_UnLoad(object sender, EventArgs e)
@@ -39,15 +40,6 @@ namespace longtermcare.NursingPlan.Shift_Exchange
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // 開合式選單 後端測試版
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append("<ul id='tabs'>");
-            sb.Append("<li><h2 id='tab'>BBBB</h2><ul><li>BBBB</li></ul></li>");
-            sb.Append("</ul>");
-
-            Literal1.Text = sb.ToString();
-            
             if (Session["H_id"] == null)
             {
                 HttpCookie myH_id_Cookie = Request.Cookies["H_id"];
@@ -126,7 +118,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             }
 
             //交班紀錄新增
-            
+
         }
 
 
@@ -756,7 +748,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             txtContent.Text += b.Text;
         }
         */
-        
+
         protected void btn_recent_Click(object sender, ImageClickEventArgs e)
         {
             sqlRecent.connect(connection_id);
@@ -764,44 +756,37 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             TabContainer1.Visible = true;
             TabContainer1.ScrollBars = System.Web.UI.WebControls.ScrollBars.Vertical;
             DataSet FormSet = sqlRecent.ReturnForm();
+            
+            // chkli、tabid的陣列存取位置;
+            int index = 0;
 
-            TabPanel tabid = new TabPanel();
-            tabid.HeaderText = "此住民最近三筆照護記錄";
-            chklp[0] = new CheckBoxList();
-            chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Vertical;
-            chklp[0].RepeatLayout = RepeatLayout.Table;
-
-            System.Web.UI.WebControls.Label Description1 = new System.Web.UI.WebControls.Label();
-            Description1.Text = "此住民目前無最近照護記錄";
-            Description1.ForeColor = System.Drawing.Color.Red;
-            Description1.Font.Size = 10;
-            Description1.Font.Bold = true;
-          
-            // 計算表單數目、建立陣列的資料類別
+            // 建立資料集、計算表單數目、建立TabPanel各表單的資料類別;
+            DataTable Form = FormSet.Tables[0];
             int Form_Count = FormSet.Tables[0].Rows.Count;
-            for(int i = 0; i < Form_Count; i++)
+            for (int i = 0; i < Form_Count; i++)
+            {
+                tabid[i] = new TabPanel();
+                tabid[i].HeaderText = Form.Rows[i]["FORM_NAME"].ToString();
+            }
+
+            // 建立checkboxlist陣列的資料類別
+            for (int i = 0; i < Form_Count; i++)
             {
                 chkli[i] = new CheckBoxList();
                 chkli[i].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Vertical;
                 chkli[i].RepeatLayout = RepeatLayout.Table;
             }
 
-            // chkli的陣列位置;
-            int chkli_index = 0;
-
             if (FormSet.Tables.Count > 0)
             {
-                int total_count = 0;
-
                 foreach (DataRow row in FormSet.Tables[0].Rows)
                 {
                     DataSet Data_Set = sqlRecent.Return3Data(row["SELECT_COMM_COL"].ToString(), row["SELECT_COMM_TABLE"].ToString(), row["SELECT_COMM_ORDERBY_DATE"].ToString(), row["NO_STRING"].ToString(), ip_no, sqlTime.DateSplitSlash(txtShowDate.Text));
-                                        
-                    for (int j = 0; j < Data_Set.Tables[0].Rows.Count; j++)
+                    
+                    if (Data_Set.Tables[0].Rows.Count > 0)
                     {
-                        if (Data_Set.Tables[0].Rows.Count > 0)
+                        for (int j = 0; j < Data_Set.Tables[0].Rows.Count; j++)
                         {
-                            
                             string[] table_name = row["SELECT_COMM_COL_NAME"].ToString().Split(',');
                             string[] table = new string[table_name.Length];
                             string record = "●" + row["FORM_NAME"].ToString();
@@ -847,57 +832,38 @@ namespace longtermcare.NursingPlan.Shift_Exchange
                                 }
                             }
 
-
                             if (count > 0)
                             {
-                                //chklp[0].Items.Add(record);
-                                //chklp[0].DataBind();
-                                total_count++;
-
-                                chkli[chkli_index].Items.Add(record);
-                                chkli[chkli_index].DataBind();
+                                chkli[index].Items.Add(record);
+                                chkli[index].DataBind();
                             }
                         }
+                        tabid[index].Controls.Add(chkli[index]);
+                    }
+                    else
+                    {
+                        System.Web.UI.WebControls.Label Description1 = new System.Web.UI.WebControls.Label();
+                        Description1.Text = "此住民目前無最近照護記錄";
+                        Description1.ForeColor = System.Drawing.Color.Red;
+                        Description1.Font.Size = 10;
+                        Description1.Font.Bold = true;
+
+                        tabid[index].Controls.Add(Description1);
                     }
 
-                    chkli_index++;
+                    index++;
                     Data_Set.Dispose();
                 }
                 
-                Description1.Visible = total_count <= 0 ? true : false;
+                for (int i = 0; i < tabid.Length; i++)
+                {
+                    TabContainer1.Controls.Add(tabid[i]);
+                }
             }
             FormSet.Dispose();
-
-            //tabid.Controls.Add(new LiteralControl("<" + "br" + ">"));
-            //tabid.Controls.Add(chklp[0]);
-
-            // 前端 HTML Code
-            HtmlGenericControl Div = new HtmlGenericControl("div");
-            DataTable Form = FormSet.Tables[0];
-            for (int row = 0; row < chkli_index; row++)
-            {
-                HtmlGenericControl ul_out = new HtmlGenericControl("ul");
-                HtmlGenericControl li_out = new HtmlGenericControl("li");
-                HtmlGenericControl h3 = new HtmlGenericControl("h3");
-                HtmlGenericControl ul_in = new HtmlGenericControl("ul");
-                HtmlGenericControl li_in = new HtmlGenericControl("li");
-                
-                li_in.Controls.Add(chkli[row]);
-                ul_in.Controls.Add(li_in);
-                h3.InnerHtml= Form.Rows[row]["FORM_NAME"].ToString();
-                li_out.Controls.Add(h3);
-                li_out.Controls.Add(ul_in);
-                ul_out.Controls.Add(li_out);
-                Div.Controls.Add(ul_out);
-            }
-            tabid.Controls.Add(Div);
-
-            tabid.Controls.Add(Description1);
-
-            TabContainer1.Controls.Add(tabid);
+            
             TabContainer1.ActiveTabIndex = selectvalue;
-
         }
-        
+
     }
 }

@@ -941,7 +941,6 @@ BACKtoTOP-STOP-->
         </div>
         <asp:UpdatePanel ID="UpdatePanel12" runat="server">
             <ContentTemplate>   
-                <asp:Label runat="server" ID="test"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>
         <div class="toggler">
@@ -968,11 +967,6 @@ BACKtoTOP-STOP-->
             <ContentTemplate>
             </ContentTemplate>
         </asp:UpdatePanel>
-    </div>
-
-    <!-- 開合式選單 測試版 -->
-    <div>
-      <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     </div>
 
     <script type="text/javascript">
@@ -1016,21 +1010,6 @@ BACKtoTOP-STOP-->
             function () {
                 setTimeout($.blockUI, 0);
             }).ajaxStop($.unblockUI);
-
-            // 開合式選單 後端測試版
-            var curr = '';
-            $('#tabs h2').click(function () {
-                if ($(this).attr("id") != curr) {
-                    $('#tabs ul').slideUp();
-                    $(this).next().slideDown(300);
-                    curr = $(this).attr("id");
-                } else {
-                    $(this).next().slideUp(300);
-                    curr = '';
-                }
-            }).css("cursor", "pointer");
-            $('#tabs h2').eq(0).click();
-
         });
 
         function showWaitPanel_PreSERecord() {
