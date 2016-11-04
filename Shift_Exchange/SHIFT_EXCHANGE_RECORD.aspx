@@ -941,6 +941,7 @@ BACKtoTOP-STOP-->
         </div>
         <asp:UpdatePanel ID="UpdatePanel12" runat="server">
             <ContentTemplate>   
+                <asp:Label runat="server" ID="test"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>
         <div class="toggler">
@@ -973,8 +974,7 @@ BACKtoTOP-STOP-->
     <div>
       <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     </div>
-    
-    
+
     <script type="text/javascript">
         function txtShowDate_Changed() {
             var txtdate = document.getElementById("ContentPlaceHolder1_txtShowDate").value;
@@ -1030,18 +1030,6 @@ BACKtoTOP-STOP-->
                 }
             }).css("cursor", "pointer");
             $('#tabs h2').eq(0).click();
-
-            $('#tests h2').click(function () {
-                if ($(this).attr("id") != curr) {
-                    $('#tests ul').slideUp();
-                    $(this).next().slideDown(300);
-                    curr = $(this).attr("id");
-                } else {
-                    $(this).next().slideUp(300);
-                    curr = '';
-                }
-            }).css("cursor", "pointer");
-            $('#tests h2').eq(0).click();
 
         });
 
