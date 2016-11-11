@@ -432,6 +432,8 @@ BACKtoTOP-STOP-->
                                     <td class="style66" width="100%">
                                         <asp:TextBox ID="txtContent" runat="server" TextMode="MultiLine" Height="100px" Width="94%"></asp:TextBox>
                                         <br />
+                                        <asp:ImageButton ID="ibtnD0" runat="server" Height="16px" Width="16px" ImageUrl="~/Image/WebImage/record.png" 
+                                   OnClick="btn_recent_Click" OnClientClick="return showWaitPanel_Recent();" ToolTip="住民近況" />
                                         <asp:ImageButton ID="ibtnPhraseShiftExchangeContent" runat="server" BorderStyle="None"
                                             Height="20px" ImageAlign="Bottom" ImageUrl="~/Image/WebImage/gif_45_069.gif"
                                             OnClick="ibtnPhraseShiftExchangeContent_Click" OnClientClick="return showWaitPanel_Content();"
@@ -889,6 +891,46 @@ BACKtoTOP-STOP-->
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
+        <div id="recent" runat="server" style="display: none; cursor: default;">
+            <asp:UpdatePanel ID="UpdatePanel11" runat="server">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr align="center">
+                            <td colspan="2" align="center">
+                                <asp:Label ID="Label6" runat="server" ForeColor="Black" Font-Bold="true" Font-Size="Medium" Font-Names="新細明體" Text="住民近況"></asp:Label>
+                            </td>
+                            <td align="right">
+                                <asp:ImageButton ID="ImageButton1" runat="server" Height="32px" ImageUrl="~/Image/WebImage/633855842283694909.jpg" Width="31px" OnClientClick="return Exit();" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left">
+                                <asp:Panel ID="Panel9" runat="server">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                                <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Width="450px" Height="300px" ScrollBars="Vertical">
+                                                    <asp:TabPanel ID="TabPanel3" runat="server" HeaderText="" Visible="false">
+                                                    </asp:TabPanel>
+                                                </asp:TabContainer>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </asp:Panel>
+                                <br />
+                            </td>
+                            <td align="right" valign="bottom">
+                                &nbsp;&nbsp;<asp:Button ID="Button4" runat="server" Text="送出" OnClientClick="return recent_btnSENT_SER_Content();" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
         <asp:UpdatePanel ID="UpdatePanel12" runat="server">
             <ContentTemplate>
             </ContentTemplate>
@@ -1044,6 +1086,22 @@ BACKtoTOP-STOP-->
                     CaretPos = document.getElementById(id).selectionStart;
                 }
             }
+
+            function showWaitPanel_Recent() {
+                var id = '<%= this.recent.ClientID%>';
+            $.blockUI({ message: $(document.getElementById(id)), css: { width: '550px', position: 'fixed', top: '20px', left: '40px' } });
+            var id = '<%= this.txtContent.ClientID%>';
+            if (document.selection) {
+                document.getElementById(id).focus();
+                var Sel = document.selection.createRange();
+                Sel.moveStart('character', -document.getElementById(id).value.length);
+                CaretPos = Sel.text.length;
+            }
+            // Firefox support
+            else if (document.getElementById(id).selectionStart || document.getElementById(id).selectionStart == '0') {
+                CaretPos = document.getElementById(id).selectionStart;
+            }
+        }
 
             function Exit() {
                 $.unblockUI();

@@ -27,6 +27,9 @@ namespace longtermcare.NursingPlan.Shift_Exchange
         CheckBoxList[] chklp = new CheckBoxList[1000];
         CheckBoxList[] chklp_p = new CheckBoxList[1000];
 
+        TabPanel[] tabid = new TabPanel[10];
+        CheckBoxList[] chkli = new CheckBoxList[1000];
+
         //離開網頁時清除狀態轉換的Session
         protected void Page_UnLoad(object sender, EventArgs e)
         {
@@ -747,14 +750,128 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             txtContent.Text += b.Text;
         }
         */
-        
 
-        
-        
-        
-        
-        
-        
-        
+        protected void btn_recent_Click(object sender, ImageClickEventArgs e)
+        {
+            sqlRecent.connect(connection_id);
+            int selectvalue = 1;
+            TabContainer1.Visible = true;
+            TabContainer1.ScrollBars = System.Web.UI.WebControls.ScrollBars.Vertical;
+            DataSet FormSet = sqlRecent.ReturnForm();
+
+            // chkli、tabid的陣列存取位置;
+            int index = 0;
+
+            // 建立資料集、計算表單數目、建立TabPanel各表單的資料類別;
+            DataTable Form = FormSet.Tables[0];
+            int Form_Count = FormSet.Tables[0].Rows.Count;
+            for (int i = 0; i < Form_Count; i++)
+            {
+                tabid[i] = new TabPanel();
+                tabid[i].HeaderText = Form.Rows[i]["FORM_NAME"].ToString();
+            }
+
+            // 建立checkboxlist陣列的資料類別
+            for (int i = 0; i < Form_Count; i++)
+            {
+                chkli[i] = new CheckBoxList();
+                chkli[i].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Vertical;
+                chkli[i].RepeatLayout = RepeatLayout.Table;
+            }
+
+            if (FormSet.Tables.Count > 0)
+            {
+                foreach (DataRow row in FormSet.Tables[0].Rows)
+                {
+                    DataSet Data_Set = sqlRecent.Return3Data(row["SELECT_COMM_COL"].ToString(), row["SELECT_COMM_TABLE"].ToString(), row["SELECT_COMM_ORDERBY_DATE"].ToString(), row["NO_STRING"].ToString(), ip_no, sqlTime.DateSplitSlash(txtShowDate.Text));
+
+                    if (Data_Set.Tables[0].Rows.Count > 0)
+                    {
+                        for (int j = 0; j < Data_Set.Tables[0].Rows.Count; j++)
+                        {
+                            string[] table_name = row["SELECT_COMM_COL_NAME"].ToString().Split(',');
+                            string[] table = new string[table_name.Length];
+                            string record = "●" + row["FORM_NAME"].ToString();
+                            int count = 0;
+
+                            for (int i = 0; i < table.Length; i++)
+                            {
+                                table[i] = Data_Set.Tables[0].Rows[j][i].ToString().Trim();
+
+                                if (row["SELECT_COMM_ORDERBY_DATE"].ToString().Split(',').Length != 2)
+                                {
+                                    if (i == 0)
+                                    {
+                                        table[i] = sqlTime.DateAddSlash(table[i]);
+                                        record += "【" + table_name[i] + ":" + table[i] + "】</br>";
+                                    }
+                                    else
+                                    {
+                                        //判斷欄位是否有值
+                                        if (!table[i].Trim().Equals(""))
+                                        {
+                                            record += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + table_name[i] + ":" + table[i] + "</br>";
+                                            count++;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (i == 0)
+                                    {
+                                        table[i] = sqlTime.DateAddSlash(table[i]);
+                                        record += "【" + table_name[i] + ":" + table[i] + "】</br>";
+                                    }
+                                    else
+                                    {
+                                        //判斷欄位是否有值
+                                        if (!table[i].Trim().Equals(""))
+                                        {
+                                            record += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + table_name[i] + ":" + table[i] + "</br>";
+                                            count++;
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (count > 0)
+                            {
+                                chkli[index].Items.Add(record);
+                                chkli[index].DataBind();
+                            }
+                        }
+                        tabid[index].Controls.Add(chkli[index]);
+                    }
+                    else
+                    {
+                        System.Web.UI.WebControls.Label Description1 = new System.Web.UI.WebControls.Label();
+                        Description1.Text = "此住民目前無最近照護記錄";
+                        Description1.ForeColor = System.Drawing.Color.Red;
+                        Description1.Font.Size = 10;
+                        Description1.Font.Bold = true;
+
+                        tabid[index].Controls.Add(Description1);
+                    }
+
+                    index++;
+                    Data_Set.Dispose();
+                }
+
+                for (int i = 0; i < tabid.Length; i++)
+                {
+                    TabContainer1.Controls.Add(tabid[i]);
+                }
+            }
+            FormSet.Dispose();
+
+            TabContainer1.ActiveTabIndex = selectvalue;
+        }
+
+
+
+
+
+
+
     }
 }

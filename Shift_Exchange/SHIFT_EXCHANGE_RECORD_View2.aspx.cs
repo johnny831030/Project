@@ -1362,6 +1362,21 @@ namespace longtermcare.NursingPlan.Shift_Exchange
 
         }
 
+        protected void btnSearchLastDay1_Click(object sender, EventArgs e)
+        {
+            txt_sqlcom.Text = "1";
+            string e_date = sqlTime.time();
+            string s_date = DateTime.Parse(sqlTime.DateAddSlash(e_date)).ToString("yyyyMMdd");
+            btnSearchLastDay(s_date, e_date);          
+        }
+
+        protected void btnSearchLastDay3_Click(object sender, EventArgs e)
+        {
+            txt_sqlcom.Text = "3";
+            string e_date = sqlTime.time();
+            string s_date = DateTime.Parse(sqlTime.DateAddSlash(e_date)).AddDays(-3).ToString("yyyyMMdd");
+            btnSearchLastDay(s_date, e_date);
+        }
 
         protected void btnSearchLastDay7_Click(object sender, EventArgs e)
         {
@@ -1382,8 +1397,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange
         private void btnSearchLastDay(string s_date, string e_date)
         {
             bool alert = true;
-
-
+            
             GridView3.Visible = true;
 
             //此一住民
@@ -1456,7 +1470,8 @@ namespace longtermcare.NursingPlan.Shift_Exchange
             }
             else if (txt_sqlcom.Text.Equals("3"))
             {
-                dt = sqlShiftExchange.SearchLastSHIFTE_RECORD2(sstr_hid.Text, txt_sql.Text, "5");
+                //dt = sqlShiftExchange.SearchLastSHIFTE_RECORD2(sstr_hid.Text, txt_sql.Text, "5");
+                dt = sqlShiftExchange.searchSHIFTE_RECORD2(sstr_hid.Text, txt_sql.Text);
             }
             else if (txt_sqlcom.Text.Equals("4"))
             {

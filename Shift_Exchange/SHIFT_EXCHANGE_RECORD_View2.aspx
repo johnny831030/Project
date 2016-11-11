@@ -446,10 +446,47 @@
                                         <asp:Label ID="Label133" runat="server" Text="快速查詢"></asp:Label>
                                     </td>
                                     <td colspan="5">
-                                        <asp:Button ID="btnSearchLast1" runat="server" Text="最近1筆" OnClick="btnSearchLast1_Click" />&nbsp;&nbsp;
-                                        <asp:Button ID="btnSearchLast5" runat="server" Text="最近5筆" OnClick="btnSearchLast5_Click" />&nbsp;&nbsp;
+                                        <asp:Button ID="btnSearchLast1" runat="server" Text="今日" OnClick="btnSearchLastDay1_Click" />&nbsp;&nbsp;
+                                        <asp:Button ID="btnSearchLast5" runat="server" Text="最近3日" OnClick="btnSearchLastDay3_Click" />&nbsp;&nbsp;
                                         <asp:Button ID="btnSearchLastDay7" runat="server" Text="最近7日" OnClick="btnSearchLastDay7_Click" />&nbsp;&nbsp;
                                         <asp:Button ID="btnSearchLastDay14" runat="server" Text="最近14日" OnClick="btnSearchLastDay14_Click" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFCC">
+                                        <asp:Label ID="Label1" runat="server" Text="查詢填寫期間"></asp:Label>
+                                    </td>
+                                    <td colspan="5">
+                                        <asp:TextBox ID="TextBox1" runat="server" onchange="txtC_date_s1_Changed();"
+                                            MaxLength="10" Width="100px"></asp:TextBox>
+                                        <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" runat="server"
+                                            TargetControlID="txtC_date_s1" WatermarkCssClass="Watermark" WatermarkText="輸入格式yyyy/MM/dd">
+                                        </asp:TextBoxWatermarkExtender>
+                                        <asp:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True"
+                                            Format="yyyy/MM/dd" TargetControlID="txtC_date_s1">
+                                        </asp:CalendarExtender>
+                                        <asp:Label ID="Label3" runat="server" ForeColor="Black" Text="到"></asp:Label>
+                                        <asp:TextBox ID="TextBox2" runat="server" onchange="txtC_date_s2_Changed();"
+                                            MaxLength="10" Width="100px"></asp:TextBox><asp:TextBoxWatermarkExtender
+                                            ID="TextBoxWatermarkExtender3" runat="server" TargetControlID="txtC_date_s2"
+                                            WatermarkCssClass="Watermark" WatermarkText="輸入格式yyyy/MM/dd">
+                                        </asp:TextBoxWatermarkExtender>
+                                        <asp:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="True" Format="yyyy/MM/dd"
+                                            TargetControlID="txtC_date_s2">
+                                        </asp:CalendarExtender>
+                                        <asp:Button ID="Button1" runat="server" Height="24px" Text="查詢" UseSubmitBehavior="False"
+                                            OnClick="btnS_Click" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFCC">
+                                        <asp:Label ID="Label2" runat="server" Text="修改日期查詢"></asp:Label>
+                                    </td>
+                                    <td colspan="5">
+                                        <asp:Button ID="btnSearchOP_date1" runat="server" Text="今日"/>&nbsp;&nbsp;
+                                        <asp:Button ID="btnSearchOP_date3" runat="server" Text="最近3日" />&nbsp;&nbsp;
+                                        <asp:Button ID="btnSearchOP_date7" runat="server" Text="最近7日" />&nbsp;&nbsp;
+                                        <asp:Button ID="btnSearchOP_date14" runat="server" Text="最近14日" />
                                     </td>
                                 </tr>
                             </table>

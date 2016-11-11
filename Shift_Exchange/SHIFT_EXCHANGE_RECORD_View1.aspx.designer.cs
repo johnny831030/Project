@@ -2,8 +2,8 @@
 // <自動產生的>
 //     這段程式碼是由工具產生的。
 //
-//     對這個檔案所做的變更可能會造成錯誤的行為，而且如果重新產生程式碼，
-//     所做的變更將會遺失。 
+//     變更這個檔案可能會導致不正確的行為，而且如果已重新產生
+//     程式碼，則會遺失變更。
 // </自動產生的>
 //------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblShiftExchangeRecord;
         
@@ -26,7 +26,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAdd;
         
@@ -35,7 +35,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnModify_shift;
         
@@ -44,7 +44,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNRS_ShiftRec;
         
@@ -53,7 +53,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn;
         
@@ -62,7 +62,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkBtnGoToAddView;
         
@@ -71,7 +71,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkBtnGoToUView;
         
@@ -80,7 +80,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkBtnGoToAddNRView;
         
@@ -89,7 +89,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkBtnGoToQView;
         
@@ -98,7 +98,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkBtnGoToMQView;
         
@@ -107,7 +107,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
@@ -116,7 +116,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanelMsg;
         
@@ -125,7 +125,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel6;
         
@@ -134,7 +134,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label sstr_ipno;
         
@@ -143,7 +143,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label sstr_hid;
         
@@ -152,7 +152,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label sstr_account;
         
@@ -161,7 +161,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
         
@@ -170,7 +170,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDito;
         
@@ -179,7 +179,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNullFormPrint;
         
@@ -188,7 +188,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRule;
         
@@ -197,7 +197,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel6;
         
@@ -206,7 +206,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelData;
         
@@ -215,7 +215,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNowData;
         
@@ -224,7 +224,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
@@ -233,7 +233,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtShowDate;
         
@@ -242,7 +242,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender txtShowDate_CalendarExtender;
         
@@ -251,7 +251,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTime;
         
@@ -260,7 +260,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTime;
         
@@ -269,7 +269,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblContent;
         
@@ -278,16 +278,25 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContent;
+        
+        /// <summary>
+        /// ibtnD0 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnD0;
         
         /// <summary>
         /// ibtnPhraseShiftExchangeContent 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ibtnPhraseShiftExchangeContent;
         
@@ -296,7 +305,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSymbolsTools;
         
@@ -305,7 +314,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelSymbolsTools;
         
@@ -314,7 +323,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.Accordion Accordion1;
         
@@ -323,7 +332,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.AccordionPane AccPan1;
         
@@ -332,7 +341,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.AccordionPane AccPan2;
         
@@ -341,7 +350,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.AccordionPane AccPan3;
         
@@ -350,7 +359,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
@@ -359,7 +368,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSave;
         
@@ -368,7 +377,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPrint;
         
@@ -377,7 +386,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClear;
         
@@ -386,7 +395,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGoBackNewAdd;
         
@@ -395,7 +404,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl preserecord;
         
@@ -404,7 +413,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel5;
         
@@ -413,7 +422,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
         
@@ -422,7 +431,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblShowNoSERecord;
         
@@ -431,7 +440,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSEDate;
         
@@ -440,7 +449,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSETime;
         
@@ -449,7 +458,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSEContent;
         
@@ -458,7 +467,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPreSERecord;
         
@@ -467,7 +476,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl phrase;
         
@@ -476,7 +485,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel4;
         
@@ -485,7 +494,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPhraseTitle;
         
@@ -494,7 +503,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
         
@@ -503,7 +512,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel3;
         
@@ -512,7 +521,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.TabContainer TabContainerPHRASE;
         
@@ -521,7 +530,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel1;
         
@@ -530,16 +539,88 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSENT_SER_Content;
+        
+        /// <summary>
+        /// recent 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl recent;
+        
+        /// <summary>
+        /// UpdatePanel11 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel11;
+        
+        /// <summary>
+        /// Label6 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label6;
+        
+        /// <summary>
+        /// ImageButton1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        
+        /// <summary>
+        /// Panel9 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel9;
+        
+        /// <summary>
+        /// TabContainer1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabContainer TabContainer1;
+        
+        /// <summary>
+        /// TabPanel3 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanel3;
+        
+        /// <summary>
+        /// Button4 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
         /// UpdatePanel12 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel12;
         
@@ -548,7 +629,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel19;
         
@@ -557,7 +638,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblShowMsg;
         
@@ -566,7 +647,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
@@ -575,7 +656,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblShowErrMsg;
         
@@ -584,7 +665,7 @@ namespace longtermcare.NursingPlan.Shift_Exchange {
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanelErrMsg;
     }
