@@ -1,0 +1,608 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NursingCarePlan.master.cs" Inherits="longtermcare.NursingCarePlan" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+ <title>MyCareMate | 創智資訊</title>
+  <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <link href="Master.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jquery-ui-1.8.24.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-2.0.3.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="../../Scripts/CancelBackSpace1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        setInterval("protectTimeOut()", 600000);
+        function protectTimeOut() {
+            document.getElementById('refresh').contentDocument.location.reload(true);
+        }
+        $(function () {
+            $('#top').click(function () {
+                $('html,body').animate({ scrollTop: '0px' }, 500);
+            });
+
+            $('#ft').click(function () {
+                $('html,body').animate({ scrollTop: $('#footer1').offset().top }, 500);
+            });
+            $("#Menu1 ul.level1").css("display", "block"); //"initial"
+        });
+
+        function warning() {
+            alert("施工中，敬請見諒");
+        }
+   </script>
+
+    <style type="text/css">
+         .styleIP
+        {
+            width: 100%;
+        }
+        .iptabstyle3
+        {
+            width: 50%;
+            padding: 0;
+            margin: 0 auto;
+        }
+        .iptabstyle4
+        {
+            width: 50%;
+            padding: 0;
+            margin: 0 auto;
+        }
+        
+        .iptabfunctionitem1
+        {
+            padding: 0 0 2px 0;
+            margin: 0px;
+            text-align: center;
+            background: #FFFFFF;
+            border: solid 1px #006600;
+            border-top-width: 1px;
+            border-bottom-width: 0;
+            border-left-width: 2px;
+            height: 22px;
+        }
+        .lbtab1
+        {
+           text-decoration: none; 
+        }
+        
+        .iptabfunctionitem2
+        {
+            padding: 0 0 2px 0;
+            margin: 0px;
+            text-align: center;
+            background: #FFFFFF;
+            border: solid 1px #006600;
+            border-top-width: 1px;
+            border-bottom-width: 0;
+            border-left-width: 2px;
+            height: 22px;
+        }
+        
+        .lbtab2
+        {
+           text-decoration: none; 
+        }
+        
+        .iptabstyle3 div
+        {
+            height: 1px;
+            overflow: hidden;
+            background: #006600;
+            border-left: solid 1px #000;
+            border-right: solid 1px #000;
+        }
+        .iptabstyle4 div
+        {
+            height: 1px;
+            overflow: hidden;
+            background: #006600;
+            border-left: solid 1px #000;
+            border-right: solid 1px #000;
+        }
+        .iptabrow1
+        {
+            margin: 0 5px;
+            background: #000;
+        }
+        .iptabrow2
+        {
+            margin: 0 3px;
+            border: 0 2px;
+        }
+        .iptabrow3
+        {
+            margin: 0 2px;
+        }
+        .iptabrow4
+        {
+            margin: 0 1px;
+            height: 2px;
+        }
+        
+        .iptabBody
+        {
+            border:Solid 1px black;
+            padding:1px;
+            background-color:white;
+        }
+        /** 滑動選單 **/
+#top,#ft {
+	position:relative;
+	cursor:pointer;
+	height:40px;
+	width:25px;
+	}
+#top {
+	background:url(/Image/WebImage/roll.png) no-repeat;
+	}
+#ft {
+	background:url(/Image/WebImage/roll.png) no-repeat 0 -80px;
+	}
+	
+#roll {
+	display:block;
+	width:25px;
+	margin-right:-600px;
+	position:fixed;
+	right:50%;
+	top:50%;
+	}
+	#effect, #effect1 {
+            display:none;
+            top: 40%;
+            right: 50%;
+            position: fixed;
+        }
+    .toggler, .toggler1 {
+                right: 100%;
+        }
+    </style>   
+</head>
+<body>
+<!-- 滑動選單 str -->
+<div id="roll">
+    <div title="置頂" id="top"></div>
+    <div title="置底" id="ft"></div>
+</div>
+<!-- 滑動選單 end -->
+
+    <%--    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>--%>
+    <form id="form1" runat="server">
+    <%--    <asp:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server"/>--%>
+     <div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="menu_nav">
+            <br />
+            <br />
+            <br />
+            <br />
+           &nbsp;&nbsp;
+      <a href="#nogo" class="button_a">
+         <span class="button_b"><span class="button_c"> </span>
+             <span class="button_d">
+                 <%-- 取消 onclick="Vietnamese_Click"--%>
+                 <asp:Button ID="Vietnamese" runat="server" 
+                    Text="越文版" class="groovybutton" OnClientClick="javascript: warning();" 
+                UseSubmitBehavior="False" /></span>
+          </span>
+       </a> &nbsp
+       
+      <a href="#nogo" class="button_a">
+         <span class="button_b">
+             <span class="button_c"> </span>
+             <span class="button_d">  
+                 <%-- 取消 onclick="Tailand_Click"--%>
+                 <asp:Button ID="Tailand" runat="server" 
+                    Text="泰文版" class="groovybutton" OnClientClick="javascript: warning();"  
+                UseSubmitBehavior="False" /></span>
+          </span>
+       </a> &nbsp
+        <a href="#nogo" class="button_a">
+         <span class="button_b">
+             <span class="button_c"> </span>
+             <span class="button_d">
+            <%-- 取消 onclick="English_Click"--%>
+            <asp:Button ID="English" runat="server" OnClientClick="javascript: warning();" 
+                    Text="英文版" class="groovybutton" UseSubmitBehavior="False" /></span>
+          </span>
+       </a>&nbsp;
+        <a href="#nogo" class="button_a">
+         <span class="button_b">
+             <span class="button_c"> </span>
+             <span class="button_d"><asp:Button ID="Chinese" runat="server" 
+                onclick="Chinese_Click" Text="繁體中文" 
+   class="groovybutton" UseSubmitBehavior="False"  /></span>
+          </span>
+       </a> &nbsp;
+        <a href="#nogo" class="button_a">
+         <span class="button_b">
+             <span class="button_c"> </span>
+             <span class="button_d">
+            <%-- 取消 onclick="SChinese_Click"--%>
+            <asp:Button ID="SChinese" runat="server"  Text="簡體中文" 
+   class="groovybutton" OnClientClick="javascript: warning();"  UseSubmitBehavior="False"  /></span>
+          </span>
+      </a> &nbsp;&nbsp;<small>
+      <span>
+            <asp:Label ID="lblempname" 
+              runat="server" Text="員工姓名" CssClass="style2"></asp:Label>
+                <asp:Label ID="emp_name" runat="server" CssClass="style2"></asp:Label>
+                <span class="style2">&nbsp;</span>
+             <asp:Label ID="lblemppos" runat="server" Text="職稱" CssClass="style2"></asp:Label>
+                <asp:Label ID="emp_position" runat="server" CssClass="style2"></asp:Label>
+                <span class="style2">&nbsp; </span>
+              <asp:Label ID="lblipname" runat="server" Text="機構名稱" CssClass="style2"></asp:Label>
+                <asp:Label ID="txtipname" runat="server" CssClass="style2"></asp:Label>   
+      &nbsp;</span><asp:Button ID="ButtonLogout" runat="server" Text="登出" 
+                    onclick="ButtonLogout_Click" CssClass="logbutton" 
+                UseSubmitBehavior="False" />
+                     &nbsp;<asp:Button ID="ButtonHome" runat="server" Text="首頁" 
+                CssClass="logbutton" onclick="ButtonHome_Click" 
+                UseSubmitBehavior="False" />
+            <small><small><span>
+            <asp:Label ID="lblBNO" runat="server" CssClass="style2" Visible="False"></asp:Label>
+            </span></small>
+          </small>
+          
+          </small>
+          
+          <br />
+          <br />
+   
+   
+ <ul>
+          <li>
+           <asp:HyperLink ID="HyperLink1" runat="server" Font-Underline="False" 
+                  NavigateUrl="~/FIPManagement.aspx">住民管理作業</asp:HyperLink>
+                </li>
+          <li>
+                <asp:HyperLink ID="HyperLink2" runat="server" Font-Underline="False" 
+                  NavigateUrl="~/FNursingRemind.aspx">住民照護管理</asp:HyperLink>
+                </li>
+          <li class="active">
+            <asp:HyperLink ID="HyperLink7" runat="server" Font-Underline="False" 
+                  NavigateUrl="~/FNursingPlan.aspx">照護計畫作業</asp:HyperLink>
+                </li>
+          <li><asp:HyperLink ID="HyperLink6" runat="server" 
+                    Font-Underline="False" NavigateUrl="~/FMMManagement.aspx">住民醫事管理</asp:HyperLink>
+                </li>
+          <li>
+                <asp:HyperLink ID="HyperLink3" runat="server" Font-Underline="False" 
+                  NavigateUrl="~/FAdministration.aspx">行政管理作業</asp:HyperLink>
+                </li>
+                 <li >
+                <asp:HyperLink ID="HyperLink4" runat="server" Font-Underline="False" 
+                         NavigateUrl="~/FBasicManagement.aspx">基本資料管理</asp:HyperLink>
+                </li>      
+               <li>
+                    <asp:HyperLink ID="HyperLink5" runat="server" Font-Underline="False" 
+                        NavigateUrl="~/FAuthority.aspx">權限管理作業</asp:HyperLink>
+                </li>
+                <li>
+                            <asp:HyperLink ID="HyperLink10" runat="server" Font-Underline="False" NavigateUrl="~/Accreditations/Accreditation.aspx">評鑑系統</asp:HyperLink>
+                        </li>
+                <li>
+                    <asp:HyperLink ID="HyperLink9" runat="server" Font-Underline="False" 
+                        NavigateUrl="~/TrainingVideo.aspx">教學影片</asp:HyperLink>
+                </li> 
+               
+        </ul>
+       <div class="header_m" align="center"> 
+        </div>
+        </div>
+          <div>
+          <asp:Menu ID="Menu1" runat="server" ForeColor="#552B00"
+                onmenuitemclick="Menu1_MenuItemClick" Orientation="Horizontal" 
+                StaticEnableDefaultPopOutImage="False" 
+                style="background:url(Image/WebImage/menu.jpg) repeat-x top; text-align:center; font-size:14px;  line-height:22px;" Width="100%" Height="22px">
+                <DynamicHoverStyle BackColor="#FF9900" Font-Size="14px" 
+                    ForeColor="White" Height="23px"/>
+                <DynamicMenuItemStyle BackColor="#FFFFCC"  ForeColor="#333333" Font-Size="14px" Height="22px"/>
+                <DynamicMenuStyle Width="160px"  />
+                <StaticHoverStyle  BackColor="#FFFF8E" ForeColor="#006600" Font-Size="14px" Height="22px"/>
+                <StaticMenuItemStyle Width="156px" />
+            </asp:Menu>
+            </div>
+
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+        <table class="iptable" height="70px" align="center">
+                            <tr>
+                                <td rowspan="2" width="60">
+                                    <asp:Image ID="img_photo" runat="server" Height="70px" Width="80px" Visible="false"/>
+                                </td>
+                                <td class="ipth" width="80" height="20px">
+                                    <asp:Label ID="LabeIP_NO" runat="server" Text="病歷號碼"></asp:Label>
+                                </td>
+                                <td class="ipth" width="80">
+                                    <asp:Label ID="LabeBedno" runat="server" Text="床號"></asp:Label>
+                                </td>
+                                <td class="ipth" width="70">
+                                    <asp:Label ID="LabelIP_Name" runat="server" Text="姓名"></asp:Label>
+                                </td>
+                                <td class="ipth" width="100">
+                                    <asp:Label ID="LabelIP_ID" runat="server" Text="身分證號"></asp:Label>
+                                </td>
+                                <td class="ipth" width="100">
+                                    <asp:Label ID="Label146" runat="server" Text="出生年月日"></asp:Label>
+                                </td>
+                                <td class="ipth" width="40">
+                                    <asp:Label ID="LabelAge" runat="server" Text="年齡"></asp:Label>
+                                </td>
+                                <td class="ipth" width="40">
+                                    <asp:Label ID="LabelSex" runat="server" Text="性別"></asp:Label>
+                                </td>
+                                <td class="ipth" width="80">
+                                    <asp:Label ID="LabelIn_D" runat="server" Text="入住日期"></asp:Label>
+                                </td>
+                                <td class="ipth" width="80">
+                                    <asp:Label ID="Label3" runat="server" Text="住民摘要"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="ipnonew" runat="server"></asp:Label>
+                                    <asp:Label ID="ipno" runat="server" Visible="False"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="iproom" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="ipname" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="ipid" runat="server" Text="" Visible="false"></asp:Label>
+                                    <asp:Label ID="ipidvisible" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="ipbirth" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="ipage" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="ipsex" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="ipfir" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:ImageButton ID="IBtn_Inventory" runat="server" ImageUrl="~/Image/WebImage/Inventory.png"
+                                        Width="25px" Height="25px" ToolTip="住民摘要" OnClick="IBtn_Inventory_Click" Visible="False" />
+                                </td>
+                            </tr>
+                        </table>
+        </div>
+        <div class="article">
+         <div id="page">
+             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >     
+             </asp:ContentPlaceHolder>
+             <div id="footer1">
+             </div>
+             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server" >     
+             </asp:ContentPlaceHolder>  
+        </div>
+        </div>
+      </div>
+      <div class="sidebar">
+      <div class="gadget">
+      <asp:Panel ID="Panel1" runat="server" Visible="false">
+      </asp:Panel>
+      <asp:Panel ID="Panel2" runat="server" Visible="true">
+      <div id="iptab-container">  
+                                <div id="iptab-menu">  
+                                   <table width="100%">
+                                       <tr>
+                                           <td class="iptabstyle3">
+                            <div class="iptabrow4">
+                            </div>
+                            <p class="iptabfunctionitem1">
+                                <asp:LinkButton ID="LinkBtnTabView1" runat="server" Font-Bold="True"
+                                    ForeColor="#003300" OnClick="LinkBtnTabView1_Click" 
+                                    CssClass="lbtab1">目前入住住民</asp:LinkButton></p>
+                        </td>
+                        <td class="iptabstyle4">
+                            <div class="iptabrow4">
+                            </div>
+                            <p class="iptabfunctionitem2">
+                                <asp:LinkButton ID="LinkBtnTabView2" runat="server" ForeColor="#003300"
+                                    OnClick="LinkBtnTabView2_Click" CssClass="lbtab2">退住住民</asp:LinkButton></p>
+                        </td>
+                                       </tr>
+                                   </table>  
+                                </div>
+                            </div>
+                            <div class="iptabBody">
+                            <asp:MultiView
+        id="multiTabs"
+        ActiveViewIndex="0"
+        Runat="server">
+        <asp:View ID="view1" runat="server">
+          &nbsp;<asp:Label ID="ipnoinput" runat="server" Font-Size="Small" Text="住民查詢" style="color: #000000"></asp:Label>
+          &nbsp;<asp:TextBox ID="TextBox1" runat="server" 
+              Width="76px" ontextchanged="TextBox1_TextChanged" AutoPostBack="True"></asp:TextBox>
+          <br />
+       <table class="styleIP">
+              <tr>
+                  <td>
+                <asp:Label ID="LabelAreano" runat="server" Font-Size="Small" Text="樓層：" style="color: #000000"></asp:Label>
+                  </td>
+                  <td>
+                <asp:DropDownList 
+                    ID="dropArea" runat="server" DataSourceID="SqlDataSource1" 
+                    DataTextField="AREA_STATE" DataValueField="AREA_STATE" 
+                    AutoPostBack="True" 
+                    onselectedindexchanged="DropDownList1_SelectedIndexChanged" Width="80px">
+                </asp:DropDownList>
+                  </td>
+              </tr>
+          </table>
+
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server"                  
+                  SelectCommand="SELECT [AREA_STATE] FROM [CODE_ROOM_AREA] WHERE AccountEnable = 'Y' ORDER BY [AREA_ID] ASC">
+                </asp:SqlDataSource>
+                <asp:GridView ID="gvwIPlist" runat="server" 
+          AutoGenerateColumns="False" DataSourceID="SqlDataSource2" AllowSorting="True" 
+          CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="70px" 
+                 Width="100%" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"  
+                BorderWidth="1px" DataKeyNames="ROOM_BED" 
+              onselectedindexchanged="gvwIPlist_SelectedIndexChanged" 
+              onrowcommand="gvwIPlist_RowCommand" onrowdatabound="gvwIPlist_RowDataBound" >
+                    <Columns>
+                        <asp:BoundField DataField="ROOM_STATION" HeaderText="房號" 
+                            SortExpression="ROOM_STATION" Visible ="False" >
+                        <FooterStyle Wrap="False" />
+                        <HeaderStyle Wrap="False" Font-Size="Small" />
+                        <ItemStyle Wrap="False" Font-Size="Small" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ROOM_BED" HeaderText="床號" 
+                            SortExpression="ROOM_BED" >
+                        <FooterStyle Wrap="False" />
+                        <HeaderStyle Wrap="False" Font-Size="Small"  />
+                        <ItemStyle Wrap="False" Font-Size="Small"  />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="姓名" ShowHeader="False" SortExpression="IP_NAME">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" Font-Size="Small" 
+                                    CommandName="Select" Text='<%# Eval("IP_NAME") %>'></asp:LinkButton>
+                            </ItemTemplate>
+                            <FooterStyle Wrap="False" />
+                            <HeaderStyle Wrap="False" Font-Size="Small" />
+                            <ItemStyle Wrap="False" />
+                        </asp:TemplateField>
+                        <asp:TemplateField ShowHeader="False">
+                                <ItemStyle Width="15px" />
+                                <HeaderStyle Width="15px" />
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="IBtn_Dashboard" runat="server" ImageUrl="~/Image/WebImage/Dashboard.png" Width="25px" Height="15px" CommandName="IPNursingDashboard" CommandArgument='<%# Eval("ROOM_BED") %>' ToolTip="住民總表" />
+                                </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField ShowHeader="False">
+                                <ItemStyle Width="15px" />
+                                <HeaderStyle Width="15px" />
+                                <ItemTemplate>
+                                <asp:ImageButton ID="IBtn_Inventory" runat="server" ImageUrl="~/Image/WebImage/Inventory.png"  Width="25px" Height="25px" CommandName="IPNursingList" CommandArgument='<%# Eval("ROOM_BED") %>' ToolTip="住民摘要"/>
+                                </ItemTemplate>
+                                </asp:TemplateField>
+                    </Columns>
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CCFFFF" Font-Bold="True" ForeColor="Black" />
+                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                    <SortedDescendingHeaderStyle BackColor="#242121" />
+                </asp:GridView>
+                <br />
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                    SelectCommand="SELECT IP_INFORMATION.IP_NAME AS IP_NAME, ROOM.ROOM_BED AS ROOM_BED, ROOM.ROOM_STATION AS ROOM_STATION, IP_INFORMATION.IP_NO AS IP_NO FROM ROOM INNER JOIN IP_INFORMATION ON ROOM.IP_NO = IP_INFORMATION.IP_NO WHERE (ROOM.ROOM_AREA = @ROOM_AREA) AND (ROOM.REPBED != 'N' OR ROOM.REPBED IS NULL) ORDER BY ROOM.ROOM_BED ASC, ROOM.ROOM_STATION ASC">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="dropArea" Name="ROOM_AREA" 
+                            PropertyName="SelectedValue" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+        </asp:View>
+        <asp:View ID="view2" runat="server">
+                                <asp:Label ID="ipnoinput1" runat="server" Style="color: #000000" Font-Size="Small" Text="住民查詢" ></asp:Label>
+                                <asp:TextBox ID="TextBox2" runat="server" AutoPostBack="True" OnTextChanged="TextBox2_TextChanged" Width="76px"></asp:TextBox>
+                                <br />
+                            <asp:Label ID="lblOutIPListInfo" runat="server" Font-Bold="True" 
+                                    ForeColor="#3333FF"></asp:Label>
+                            <asp:GridView ID="gvwOutIPList" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3"
+                                AllowSorting="True" CellPadding="2" ForeColor="Black" GridLines="Horizontal"
+                                Height="70px" Width="100%" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"
+                                BorderWidth="1px" DataKeyNames="NO" OnSelectedIndexChanged="gvwOutIPList_SelectedIndexChanged"
+                                OnRowCommand="gvwOutIPList_RowCommand" OnRowDataBound="gvwOutIPList_RowDataBound">
+                                <Columns>
+                                <asp:TemplateField HeaderText="IP_NO" Visible="False">
+                                <ItemTemplate>
+                                <asp:Label ID="lab_IP_NO" runat="server" Text='<%# Bind("IP_NO") %>'></asp:Label>
+                                </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="入住期間" ShowHeader="False" 
+                                        SortExpression="INDATE_RANGE">
+                                <ItemTemplate>
+                                <asp:Label ID="Label4" runat="server" Text='<%# DGFormatRIDDATERange(Convert.ToString(DataBinder.Eval(Container.DataItem,"INDATE_RANGE"))) %>' Font-Size="XX-Small"></asp:Label>
+                                </ItemTemplate>
+                                <FooterStyle Wrap="False" />
+                                <HeaderStyle Wrap="False" Font-Size="Small" />
+                                <ItemStyle Wrap="False" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="姓名" ShowHeader="False" SortExpression="IP_NAME">
+                                <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="Select" Text='<%# Eval("IP_NAME") %>' Font-Size="Small"></asp:LinkButton>
+                                </ItemTemplate>
+                                <FooterStyle Wrap="False" />
+                                <HeaderStyle Wrap="False" Font-Size="Small" />
+                                <ItemStyle Wrap="False" />
+                                </asp:TemplateField>
+                                <asp:TemplateField ShowHeader="False">
+                                <ItemTemplate>
+                                <asp:ImageButton ID="IBtn_Dashboard_OUT" runat="server" CommandArgument='<%# Eval("IP_NO") %>' 
+                                            CommandName="IPNursingDashboard_OUT" Height="15px" 
+                                            ImageUrl="~/Image/WebImage/Dashboard.png" ToolTip="住民總表" Width="25px" />
+                                            </ItemTemplate>
+                                            <HeaderStyle Width="15px" />
+                                            <ItemStyle Width="15px" />
+                                            </asp:TemplateField>
+                                <asp:TemplateField ShowHeader="False">
+                                            <ItemTemplate>
+                                            <asp:ImageButton 
+                                            ID="IBtn_Inventory_OUT" runat="server" CommandArgument='<%# Eval("IP_NO") %>' 
+                                            CommandName="IPNursingList_OUT" Height="25px" 
+                                            ImageUrl="~/Image/WebImage/Inventory.png" ToolTip="住民摘要" Width="25px" />
+                                            </ItemTemplate>
+                                            <HeaderStyle 
+                                        Width="15px" />
+                                        <ItemStyle Width="15px" />
+                                        </asp:TemplateField>
+                                <asp:TemplateField HeaderText="NO" Visible="False">
+                                <ItemTemplate>
+                                <asp:Label ID="lab_NO" runat="server" Text='<%# Bind("NO") %>'></asp:Label>
+                                </ItemTemplate>
+                                </asp:TemplateField>
+                                </Columns>
+                                <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                                <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                                <SelectedRowStyle BackColor="#CCFFFF" Font-Bold="True" ForeColor="Black" />
+                                <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                                <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                                <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                                <SortedDescendingHeaderStyle BackColor="#242121" />
+                             </asp:GridView>
+                             <asp:SqlDataSource ID="SqlDataSource3" runat="server">
+                            </asp:SqlDataSource>
+        </asp:View>
+        </asp:MultiView>    
+    </div>
+       </asp:Panel> 
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer_resize">
+    <p align="center">© 創智資訊有限公司</p>     
+      <div class="clr"></div>
+    </div>
+    <div class="clr" style="display:none;"><iframe src="../../wFrmRefresh.aspx" id="refresh"></iframe></div>
+  </div>
+</div>
+
+</form>
+</body>
+</html>

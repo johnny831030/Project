@@ -1,0 +1,230 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Accreditation.Master.cs"
+    Inherits="longtermcare.Accreditation" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>MyCareMate | 創智資訊</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="Master.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jquery-2.1.4.js" type="text/javascript"></script>
+    <script src="../../Scripts/vakata-jstree-7a976d1/dist/jstree.min.js" type="text/javascript"></script>
+
+    <script src="../../Scripts/jquery.blockUI_1.33.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-ui-1.11.4/jquery-ui.js" type="text/javascript"></script>
+    <script src="../../Scripts/CancelBackSpace1.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="Scripts/vakata-jstree-7a976d1/dist/themes/default/style.min.css" />
+
+    <script type="text/javascript">
+        $(function () {
+            $('#top').click(function () {
+                $('html,body').animate({ scrollTop: '0px' }, 500);
+            });
+
+            $('#ft').click(function () {
+                $('html,body').animate({ scrollTop: $('#footer1').offset().top }, 500);
+            });
+            $("#Menu1 ul.level1").css("display", "block"); //"initial"
+        });
+
+        function warning() {
+            alert("施工中，敬請見諒");
+        }
+    </script>
+    <style type="text/css">
+        /** 滑動選單 **/
+        #top, #ft {
+            position: relative;
+            cursor: pointer;
+            height: 40px;
+            width: 25px;
+        }
+
+        #top {
+            background: url(/Image/WebImage/roll.png) no-repeat;
+        }
+
+        #ft {
+            background: url(/Image/WebImage/roll.png) no-repeat 0 -80px;
+        }
+
+        #roll {
+            display: block;
+            width: 25px;
+            margin-right: -600px;
+            position: fixed;
+            right: 50%;
+            top: 50%;
+        }
+
+        .content .mainbar {
+            margin: 0px 8px;
+            float: none;
+            width: initial;
+        }
+    </style>
+</head>
+<body>
+    <!-- 滑動選單 str -->
+    <div id="roll">
+        <div title="置頂" id="top">
+        </div>
+        <div title="置底" id="ft">
+        </div>
+    </div>
+    <!-- 滑動選單 end -->
+    <form id="form1" runat="server">
+        <div class="main">
+            <div class="header">
+                <div class="header_resize">
+                    <div class="menu_nav">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        &nbsp;&nbsp; 
+                    <a href="#nogo" class="button_a">
+                        <span class="button_b">
+                            <span class="button_c"></span>
+                            <span class="button_d">
+                                <%-- 取消 onclick="Vietnamese_Click"--%>
+                                <asp:Button ID="Vietnamese" runat="server" Text="越文版" class="groovybutton" OnClientClick="javascript: warning();"
+                                    UseSubmitBehavior="False" />
+                            </span>
+                        </span>
+                    </a>&nbsp 
+                    <a href="#nogo" class="button_a">
+                        <span class="button_b">
+                            <span class="button_c"></span>
+                            <span class="button_d">
+                                <%-- 取消 onclick="Tailand_Click"--%>
+                                <asp:Button ID="Tailand" runat="server" Text="泰文版" class="groovybutton" OnClientClick="javascript: warning();"
+                                    UseSubmitBehavior="False" />
+                            </span>
+                        </span>
+                    </a>&nbsp 
+                    <a href="#nogo" class="button_a">
+                        <span class="button_b">
+                            <span class="button_c"></span>
+                            <span class="button_d">
+                                <%-- 取消 onclick="English_Click"--%>
+                                <asp:Button ID="English" runat="server" OnClientClick="javascript: warning();" Text="英文版" class="groovybutton"
+                                    UseSubmitBehavior="False" />
+                            </span>
+                        </span>
+                    </a>&nbsp;
+                    <a href="#nogo" class="button_a">
+                        <span class="button_b">
+                            <span class="button_c"></span>
+                            <span class="button_d">
+                                <asp:Button ID="Chinese" runat="server" OnClick="Chinese_Click" Text="繁體中文" class="groovybutton"
+                                    UseSubmitBehavior="False" />
+                            </span>
+                        </span>
+                    </a>&nbsp; 
+                    <a href="#nogo" class="button_a">
+                        <span class="button_b">
+                            <span class="button_c"></span>
+                            <span class="button_d">
+                                <%-- 取消 onclick="SChinese_Click"--%>
+                                <asp:Button ID="SChinese" runat="server" Text="簡體中文" class="groovybutton" OnClientClick="javascript: warning();"
+                                    UseSubmitBehavior="False" />
+                            </span>
+                        </span>
+                    </a>&nbsp;&nbsp;<small><span>
+                        <asp:Label ID="lblempname" runat="server" Text="員工姓名" CssClass="style2"></asp:Label>
+                        <asp:Label ID="emp_name" runat="server" CssClass="style2"></asp:Label>
+                        <span class="style2">&nbsp; </span>
+                        <asp:Label ID="lblemppos" runat="server" Text="職稱" CssClass="style2"></asp:Label>
+                        <asp:Label ID="emp_position" runat="server" CssClass="style2"></asp:Label>
+                        <span class="style2">&nbsp; </span>
+                        <asp:Label ID="lblipname" runat="server" Text="機構名稱" CssClass="style2"></asp:Label>
+                        <asp:Label ID="txtipname" runat="server" CssClass="style2"></asp:Label>
+                        &nbsp;</span><asp:Button ID="ButtonLogout" runat="server" Text="登出" OnClick="ButtonLogout_Click"
+                            CssClass="logbutton" CausesValidation="False" UseSubmitBehavior="False" />
+                        &nbsp;<asp:Button ID="ButtonHome" runat="server" Text="首頁" CssClass="logbutton" CausesValidation="False"
+                            OnClick="ButtonHome_Click" UseSubmitBehavior="False" />
+                        <small><small><span>
+                            <asp:Label ID="lblBNO" runat="server" CssClass="style2" Visible="False"></asp:Label>
+                        </span></small></small></small>
+                        <br />
+                        <br />
+                        <ul>
+                            <li>
+                                <asp:HyperLink ID="HyperLink1" runat="server" Font-Underline="False" NavigateUrl="~/FIPManagement.aspx">住民管理作業</asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink2" runat="server" Font-Underline="False" NavigateUrl="~/FNursingRemind.aspx">住民照護管理</asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink7" runat="server" Font-Underline="False" NavigateUrl="~/FNursingPlan.aspx">照護計畫作業</asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink6" runat="server" Font-Underline="False" NavigateUrl="~/FMMManagement.aspx">住民醫事管理</asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink3" runat="server" Font-Underline="False" NavigateUrl="~/FAdministration.aspx">行政管理作業</asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink4" runat="server" Font-Underline="False" NavigateUrl="~/FBasicManagement.aspx">基本資料管理</asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink5" runat="server" Font-Underline="False" NavigateUrl="~/FAuthority.aspx">權限管理作業</asp:HyperLink>
+                            </li>
+                            <li class="active">
+                                <asp:HyperLink ID="HyperLink10" runat="server" Font-Underline="False" NavigateUrl="~/Accreditations/Accreditation.aspx">評鑑系統</asp:HyperLink>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="HyperLink9" runat="server" Font-Underline="False" NavigateUrl="~/TrainingVideo.aspx">教學影片</asp:HyperLink>
+                            </li>
+                        </ul>
+                        <div class="header_m" align="center">
+                        </div>
+                    </div>
+                    <div>
+                        <asp:Menu ID="Menu1" runat="server" ForeColor="#552B00" OnMenuItemClick="Menu1_MenuItemClick"
+                            Orientation="Horizontal" StaticEnableDefaultPopOutImage="False" Style="background: url(Image/WebImage/menu.jpg) repeat-x top; text-align: center; font-size: 14px; line-height: 22px;"
+                            Width="100%" Height="22px">
+                            <DynamicHoverStyle BackColor="#FF9900" Font-Size="14px" ForeColor="White" Height="23px" />
+                            <DynamicMenuItemStyle BackColor="#FFFFCC" ForeColor="#333333" Font-Size="14px" Height="22px" />
+                            <DynamicMenuStyle Width="160px" />
+                            <StaticHoverStyle BackColor="#FFFF8E" ForeColor="#006600" Font-Size="14px" Height="22px" />
+                            <StaticMenuItemStyle Width="156px" />
+                        </asp:Menu>
+                    </div>
+                    <div class="clr">
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content_resize">
+                    <div class="mainbar">
+                        <div class="article">
+                            <div id="page" style="width: 100%;">
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+                                <div id="footer1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr">
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer_resize">
+                    <p align="center">
+                        © 創智資訊有限公司
+                    </p>
+                    <div class="clr">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

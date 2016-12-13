@@ -1,0 +1,262 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FrontPage.master.cs" Inherits="longtermcare.FrontPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>MyCareMate | 創智資訊</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="Master.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/CancelBackSpace1.js" type="text/javascript"></script>
+</head>
+
+<body>
+    
+ <form id="form1" runat="server">
+<div class="main">
+  <div class="header">
+       <div class="header_resize">
+      <div class="menu_nav">
+
+            <br />
+            <br />
+            <br />
+            <br />
+           &nbsp;&nbsp;
+      <a href="#nogo" class="button_a">
+         <span class="button_b"><span class="button_c"> </span>
+             <span class="button_d">
+                 <%-- 取消 onclick="Vietnamese_Click"--%>
+                 <asp:Button ID="Vietnamese" runat="server" 
+                    Text="越文版" class="groovybutton" OnClientClick="javascript: warning();"
+                UseSubmitBehavior="False" /></span>
+          </span>
+          
+       </a> &nbsp
+       
+      <a href="#nogo" class="button_a">
+         <span class="button_b">
+             <span class="button_c"> </span>
+             <%-- 取消 onclick="Tailand_Click"--%>
+             <span class="button_d">  <asp:Button ID="Tailand" runat="server" 
+                    Text="泰文版" class="groovybutton" OnClientClick="javascript: warning();" 
+                UseSubmitBehavior="False" /></span>
+          </span>
+          
+       </a> &nbsp
+        <a href="#nogo" class="button_a">
+         <span class="button_b">
+             <span class="button_c"> </span>
+             <span class="button_d">
+                 <%-- 取消 onclick="English_Click"--%>
+            <asp:Button ID="English" runat="server" OnClientClick="javascript: warning();" 
+                    Text="英文版" class="groovybutton" UseSubmitBehavior="False" /></span>
+          </span>
+          
+       </a>&nbsp;
+        <a href="#nogo" class="button_a">
+         <span class="button_b">
+             <span class="button_c"> </span>
+             <span class="button_d"><asp:Button ID="Chinese" runat="server" 
+                onclick="Chinese_Click" Text="繁體中文" 
+   class="groovybutton" UseSubmitBehavior="False"  /></span>
+          </span>
+       </a> &nbsp;
+        <a href="#nogo" class="button_a">
+         <span class="button_b">
+             <span class="button_c"> </span>
+             <span class="button_d">
+                 <%-- 取消 onclick="SChinese_Click"--%>
+            <asp:Button ID="SChinese" runat="server"  Text="簡體中文" 
+   class="groovybutton" OnClientClick="javascript: warning();" UseSubmitBehavior="False"  /></span>
+          </span>
+       </a>&nbsp;&nbsp;<small><span>
+            <asp:Label ID="lblempname" 
+              runat="server" Text="員工姓名" CssClass="style2"></asp:Label>
+                <asp:Label ID="emp_name" runat="server" CssClass="style2"></asp:Label>
+                <span class="style2">&nbsp;
+             </span>
+             <asp:Label ID="lblemppos" runat="server" Text="職稱" CssClass="style2"></asp:Label>
+                <asp:Label ID="emp_position" runat="server" CssClass="style2"></asp:Label>
+                <span class="style2">&nbsp; </span><asp:Label ID="lblipname" runat="server" Text="機構名稱" CssClass="style2"></asp:Label>
+                <asp:Label ID="txtipname" runat="server" CssClass="style2"></asp:Label> &nbsp;</span><asp:Button ID="ButtonLogout" runat="server" Text="登出" 
+                    onclick="ButtonLogout_Click" CssClass="logbutton" 
+                UseSubmitBehavior="False" />
+                     &nbsp;<asp:Button ID="ButtonHome" runat="server" Text="首頁" 
+                CssClass="logbutton" onclick="ButtonHome_Click" 
+                UseSubmitBehavior="False" />
+            <small><small><span>
+            <asp:Label ID="lblBNO" runat="server" CssClass="style2" Visible="False"></asp:Label>
+            </span></small>
+          </small>
+          
+          </small>
+           
+          <br />
+          <br />
+   
+ <ul>
+          <li>
+           <asp:HyperLink ID="HyperLink1" runat="server" Font-Underline="False" 
+                  NavigateUrl="~/FIPManagement.aspx">住民管理作業</asp:HyperLink>
+                </li>
+          <li>
+                <asp:HyperLink ID="HyperLink2" runat="server" Font-Underline="False" 
+                  NavigateUrl="~/FNursingRemind.aspx">住民照護管理</asp:HyperLink>
+                </li>
+          <li>
+              <asp:HyperLink ID="HyperLink7" runat="server" Font-Underline="False" 
+                  NavigateUrl="~/FNursingPlan.aspx">照護計畫作業</asp:HyperLink>
+                </li>
+          <li><asp:HyperLink ID="HyperLink6" runat="server" 
+                    Font-Underline="False" NavigateUrl="~/FMMManagement.aspx" >住民醫事管理</asp:HyperLink>
+                </li>
+          <li>
+                <asp:HyperLink ID="HyperLink3" runat="server" Font-Underline="False" 
+                  NavigateUrl="~/FAdministration.aspx">行政管理作業</asp:HyperLink>
+                </li>
+                 <li>
+                <asp:HyperLink ID="HyperLink4" runat="server" Font-Underline="False" 
+                         NavigateUrl="~/FBasicManagement.aspx">基本資料管理</asp:HyperLink>
+                </li>      
+                <li>
+                    <asp:HyperLink ID="HyperLink5" runat="server" Font-Underline="False" 
+                        NavigateUrl="~/FAuthority.aspx">權限管理作業</asp:HyperLink>
+                </li>
+                <li>
+                            <asp:HyperLink ID="HyperLink10" runat="server" Font-Underline="False" NavigateUrl="~/Accreditations/Accreditation.aspx">評鑑系統</asp:HyperLink>
+                        </li>
+                <li>
+                    <asp:HyperLink ID="HyperLink9" runat="server" Font-Underline="False" 
+                        NavigateUrl="~/TrainingVideo.aspx">教學影片</asp:HyperLink>
+                </li> 
+        </ul>
+        <div class="header_m"> 
+        <div>
+          
+      </div>
+     
+          </div></div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+
+        <div class="article">
+         <div id="page">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >     
+        </asp:ContentPlaceHolder>  
+          </div>       
+        </div>
+      </div>
+      <div class="sidebar">
+      <div class="gadget" align="center">          
+                <asp:Calendar ID="calEMPNews" runat="server" BackColor="White" 
+                    BorderColor="#999999" CellPadding="3" 
+                    DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" 
+                    ForeColor="Black" Height="147px" Width="155px" 
+                    onselectionchanged="calEMPNews_SelectionChanged" 
+                    style="text-align: center">
+                    <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                    <NextPrevStyle VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="#808080" />
+                    <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                    <SelectorStyle BackColor="#CCCCCC" />
+                    <TitleStyle BackColor="#999999" BorderColor="Black" 
+                        Font-Bold="True" />
+                    <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                    <WeekendDayStyle BackColor="#FFFFCC" />
+                </asp:Calendar>          
+                <br />          
+        </div>
+        <div class ="gadget">
+            <div>
+                 <asp:ImageButton ID="IBtn_CUTalkMan" runat="server" ImageUrl="~/Image/WebImage/CUTalklogo.png"
+                                        Width="50px" Height="30px" ToolTip="CVTalk管理摘要" 
+                     OnClick="IBtn_CUTalkMan_Click"/>
+                     &nbsp;
+                 <asp:ImageButton ID="IBtn_CUTalkMeetingRec" runat="server" ImageUrl="~/Image/WebImage/meetingrec.png"
+                                        Width="50px" Height="30px" ToolTip="CVTalk會議紀錄" 
+                     OnClick="IBtn_CUTalkMeetingRec_Click"/>
+            </div>
+            <asp:GridView ID="gvwEMPNews" runat="server" AutoGenerateColumns="False" 
+                CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" 
+                GridLines="None" Width="160px" OnPageIndexChanging="CustomersGridView_PageIndexChanged"  
+                OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" PageSize="5">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:TemplateField HeaderText="待辦日期" SortExpression="R_DATE">                        
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" 
+                                Text='<%# DGFormatRID2(Convert.ToString(DataBinder.Eval(Container.DataItem,"R_DATE"))) %>'></asp:Label>
+                        </ItemTemplate>
+                          <EditItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("R_DATE") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="待辦事項" SortExpression="TITLE">
+                        <ItemTemplate>
+                            <asp:HyperLink ID="HyperLink8" runat="server" Text='<%# Eval("TITLE") %>' 
+                                Target="_blank" onclick="window.open (this.href, 'child', 'height=455,width=520,scrollbars'); return false"></asp:HyperLink>
+                            <asp:HiddenField ID="HiddenField1" runat="server" Value='<%# Eval("NO") %>' />
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("TITLE") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Left" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
+            </asp:GridView>
+            <asp:Label ID="lblNews" runat="server"></asp:Label>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server"              
+                
+                SelectCommand="SELECT NEWS.TITLE, NEWS.R_DATE, NEWS.NO, NEWS.CONTENT_NEWS, NEWS.BELONG FROM NEWS LEFT JOIN CONSULTATION ON NEWS.NO = CONSULTATION.NEWS_NO WHERE CONSULTATION.ISDONE IS NULL AND (((BELONG = @BELONG AND Transfer < > 'Y' AND Transfer < > 'Z' ) OR DEPARTMENT_NO = @BELONG OR BELONG = @BELONG2) AND (AccountEnable = 'Y') AND (@DATE BETWEEN S_DATE AND E_DATE) " 
+                ConnectionString="<%$ ConnectionStrings:_20120115ConnectionString %>">                
+                <SelectParameters>
+                    <asp:Parameter Name="BELONG" />
+                    <asp:Parameter Name="BELONG2" />
+                    <asp:Parameter Name="DATE" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+          </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div class="footer_resize">
+     <p align="center">© 創智資訊有限公司</p>     
+      <div class="clr"></div>
+    </div>
+    <div class="clr" style="display:none;"><iframe src="../../wFrmRefresh.aspx" id="refresh"></iframe></div>
+  </div>
+</div>
+
+</form>
+<script type="text/javascript">
+    setInterval("protectTimeOut()", 600000);
+    function protectTimeOut() {
+        document.getElementById('refresh').contentDocument.location.reload(true);
+    }
+
+    function warning() {
+        alert("施工中，敬請見諒");
+    }
+</script>
+</body>
+</html>
