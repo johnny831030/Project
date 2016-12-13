@@ -300,15 +300,14 @@
                             </tr>
                         </table>
                         <br />
-                        
-                        <asp:Label ID="Label40" runat="server" Text="或自表單中選取住民："></asp:Label>
+                        <asp:Label ID="Label40" runat="server" Text="自表單中選取住民："></asp:Label>
                         <br />
                         <br />
                         <asp:GridView ID="gvwIPList" runat="server" AutoGenerateColumns="False" CellPadding="3"
                             DataKeyNames="IP_NO" DataSourceID="SqlDataSource1" OnPageIndexChanging="CustomersGridView_PageIndexChanged"
                             OnSelectedIndexChanged="gvwIPList_SelectedIndexChanged" AllowPaging="True" PageSize="5"
                             BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="2px"
-                            Width="845px">
+                            Width="845px" Visible="false">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
@@ -339,11 +338,9 @@
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:constr %>"
-                            SelectCommand="">
+                            SelectCommand="SELECT I.IP_NO, I.IP_NO_NEW, I.IP_NAME, I.IP_ID, I.DOB, ROOM.ROOM_BED FROM IP_INFORMATION as I Left Outer Join ROOM ON I.IP_NO = ROOM.IP_NO WHERE (I.AccountEnable = 'Y') order by I.IP_NO">
                         </asp:SqlDataSource>
-                        <!-- SELECT I.IP_NO, I.IP_NO_NEW, I.IP_NAME, I.IP_ID, I.DOB, ROOM.ROOM_BED FROM IP_INFORMATION as I Left Outer Join ROOM ON I.IP_NO = ROOM.IP_NO WHERE (I.AccountEnable = 'Y') order by I.IP_NO -->
-                        <br /> 
-                        
+                        <br />
                     </asp:View>
                     <asp:View ID="View2" runat="server">
                         <br />
