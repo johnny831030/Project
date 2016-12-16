@@ -59,7 +59,7 @@ namespace longtermcare.IPBasic
             vege2.ConnectionString = datasource;
             vege2_1.ConnectionString = datasource;
             vege3.ConnectionString = datasource;
-
+            
             this.Page.Form.DefaultButton = "ContentPlaceHolder1$btnAddIPBasic";
             string language = Session["language"].ToString();
 
@@ -1638,20 +1638,30 @@ namespace longtermcare.IPBasic
             TabPanel tabid = new TabPanel();//建立Tab物件
 
             tabid.HeaderText = pharsename; // 指定片語類別名稱為Tab標籤
-            chklp[0] = new CheckBoxList();//建立CheckBoxList物件
-            chklp[0].RepeatColumns = 5; // 此CheckBoxList物件每一行有5個item
-            chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此CheckBoxList物件的item排列方式是水平
-            chklp[0].RepeatLayout = RepeatLayout.Table;
+            //chklp[0] = new CheckBoxList();//建立CheckBoxList物件
+            //chklp[0].RepeatColumns = 5; // 此CheckBoxList物件每一行有5個item
+            //chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此CheckBoxList物件的item排列方式是水平
+            //chklp[0].RepeatLayout = RepeatLayout.Table;
+            rdblp[0] = new RadioButtonList();//建立RadioButtonList物件
+            rdblp[0].RepeatColumns = 5; // 此RadioButtonList物件每一行有5個item
+            rdblp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此RadioButtonList物件的item排列方式是水平
+            rdblp[0].RepeatLayout = RepeatLayout.Table;
+
             //將片語陣列內的值逐一放置CheckBoxList物件的item內
             for (int j = 0; j < (Convert.ToInt32(phrase_item.Length) / 2); j++)
             {
-                chklp[0].Items.Add(phrase_item[0, j]); //建立CheckBoxList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
-                chklp[0].Items[j].Value = phrase_item[1, j]; //CheckBoxList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
-                chklp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
-                chklp[0].DataBind();
+                //chklp[0].Items.Add(phrase_item[0, j]); //建立CheckBoxList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
+                //chklp[0].Items[j].Value = phrase_item[1, j]; //CheckBoxList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
+                //chklp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
+                //chklp[0].DataBind();
+
+                rdblp[0].Items.Add(phrase_item[0, j]); //建立RadioButtonList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
+                rdblp[0].Items[j].Value = phrase_item[1, j]; //RadioButtonList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
+                rdblp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
+                rdblp[0].DataBind();
             }
             tabid.Controls.Add(new LiteralControl("<" + "br" + ">"));
-            tabid.Controls.Add(chklp[0]); //把CheckBoxList物件建立在Tab內
+            tabid.Controls.Add(rdblp[0]); //把CheckBoxList物件建立在Tab內
             TabContainerPHRASE.Controls.Add(tabid); //把Tab放置在Tab的控制容器內
             TabContainerPHRASE.ActiveTabIndex = selectvalue; //顯示預設的Tab(可能Tab的控制容器內友好幾個Tab…要選定哪一個Tab為預設要顯示的Tab)
 
@@ -1688,20 +1698,30 @@ namespace longtermcare.IPBasic
             TabPanel tabid = new TabPanel();//建立Tab物件
 
             tabid.HeaderText = pharsename; // 指定片語類別名稱為Tab標籤
-            chklp[0] = new CheckBoxList();//建立CheckBoxList物件
-            chklp[0].RepeatColumns = 5; // 此CheckBoxList物件每一行有5個item
-            chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此CheckBoxList物件的item排列方式是水平
-            chklp[0].RepeatLayout = RepeatLayout.Table;
+            //chklp[0] = new CheckBoxList();//建立CheckBoxList物件
+            //chklp[0].RepeatColumns = 5; // 此CheckBoxList物件每一行有5個item
+            //chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此CheckBoxList物件的item排列方式是水平
+            //chklp[0].RepeatLayout = RepeatLayout.Table;
+            rdblp[0] = new RadioButtonList();//建立RadioButtonList物件
+            rdblp[0].RepeatColumns = 5; // 此RadioButtonList物件每一行有5個item
+            rdblp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此RadioButtonList物件的item排列方式是水平
+            rdblp[0].RepeatLayout = RepeatLayout.Table;
+
             //將片語陣列內的值逐一放置CheckBoxList物件的item內
             for (int j = 0; j < (Convert.ToInt32(phrase_item.Length) / 2); j++)
             {
-                chklp[0].Items.Add(phrase_item[0, j]); //建立CheckBoxList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
-                chklp[0].Items[j].Value = phrase_item[1, j]; //CheckBoxList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
-                chklp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
-                chklp[0].DataBind();
+                //chklp[0].Items.Add(phrase_item[0, j]); //建立CheckBoxList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
+                //chklp[0].Items[j].Value = phrase_item[1, j]; //CheckBoxList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
+                //chklp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
+                //chklp[0].DataBind();
+
+                rdblp[0].Items.Add(phrase_item[0, j]); //建立RadioButtonList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
+                rdblp[0].Items[j].Value = phrase_item[1, j]; //RadioButtonList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
+                rdblp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
+                rdblp[0].DataBind();
             }
             tabid.Controls.Add(new LiteralControl("<" + "br" + ">"));
-            tabid.Controls.Add(chklp[0]); //把CheckBoxList物件建立在Tab內
+            tabid.Controls.Add(rdblp[0]); //把CheckBoxList物件建立在Tab內
             TabContainerPHRASE.Controls.Add(tabid); //把Tab放置在Tab的控制容器內
             TabContainerPHRASE.ActiveTabIndex = selectvalue; //顯示預設的Tab(可能Tab的控制容器內友好幾個Tab…要選定哪一個Tab為預設要顯示的Tab)
 
@@ -1738,20 +1758,29 @@ namespace longtermcare.IPBasic
             TabPanel tabid = new TabPanel();//建立Tab物件
 
             tabid.HeaderText = pharsename; // 指定片語類別名稱為Tab標籤
-            chklp[0] = new CheckBoxList();//建立CheckBoxList物件
-            chklp[0].RepeatColumns = 5; // 此CheckBoxList物件每一行有5個item
-            chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此CheckBoxList物件的item排列方式是水平
-            chklp[0].RepeatLayout = RepeatLayout.Table;
-            //將片語陣列內的值逐一放置CheckBoxList物件的item內
+            //chklp[0] = new CheckBoxList();//建立CheckBoxList物件
+            //chklp[0].RepeatColumns = 5; // 此CheckBoxList物件每一行有5個item
+            //chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此CheckBoxList物件的item排列方式是水平
+            //chklp[0].RepeatLayout = RepeatLayout.Table;
+            rdblp[0] = new RadioButtonList();//建立RadioButtonList物件
+            rdblp[0].RepeatColumns = 5; // 此RadioButtonList物件每一行有5個item
+            rdblp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此RadioButtonList物件的item排列方式是水平
+            rdblp[0].RepeatLayout = RepeatLayout.Table;
+            ////將片語陣列內的值逐一放置CheckBoxList物件的item內
             for (int j = 0; j < (Convert.ToInt32(phrase_item.Length) / 2); j++)
             {
-                chklp[0].Items.Add(phrase_item[0, j]); //建立CheckBoxList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
-                chklp[0].Items[j].Value = phrase_item[1, j]; //CheckBoxList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
-                chklp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
-                chklp[0].DataBind();
+                //chklp[0].Items.Add(phrase_item[0, j]); //建立CheckBoxList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
+                //chklp[0].Items[j].Value = phrase_item[1, j]; //CheckBoxList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
+                //chklp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
+                //chklp[0].DataBind();
+
+                rdblp[0].Items.Add(phrase_item[0, j]); //建立RadioButtonList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
+                rdblp[0].Items[j].Value = phrase_item[1, j]; //RadioButtonList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
+                rdblp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
+                rdblp[0].DataBind();
             }
             tabid.Controls.Add(new LiteralControl("<" + "br" + ">"));
-            tabid.Controls.Add(chklp[0]); //把CheckBoxList物件建立在Tab內
+            tabid.Controls.Add(rdblp[0]); //把CheckBoxList物件建立在Tab內
             TabContainerPHRASE.Controls.Add(tabid); //把Tab放置在Tab的控制容器內
             TabContainerPHRASE.ActiveTabIndex = selectvalue; //顯示預設的Tab(可能Tab的控制容器內友好幾個Tab…要選定哪一個Tab為預設要顯示的Tab)
 
@@ -1789,20 +1818,30 @@ namespace longtermcare.IPBasic
             TabPanel tabid = new TabPanel();//建立Tab物件
 
             tabid.HeaderText = pharsename; // 指定片語類別名稱為Tab標籤
-            chklp[0] = new CheckBoxList();//建立CheckBoxList物件
-            chklp[0].RepeatColumns = 5; // 此CheckBoxList物件每一行有5個item
-            chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此CheckBoxList物件的item排列方式是水平
-            chklp[0].RepeatLayout = RepeatLayout.Table;
+            //chklp[0] = new CheckBoxList();//建立CheckBoxList物件
+            //chklp[0].RepeatColumns = 5; // 此CheckBoxList物件每一行有5個item
+            //chklp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此CheckBoxList物件的item排列方式是水平
+            //chklp[0].RepeatLayout = RepeatLayout.Table;
+            rdblp[0] = new RadioButtonList();//建立RadioButtonList物件
+            rdblp[0].RepeatColumns = 5; // 此RadioButtonList物件每一行有5個item
+            rdblp[0].RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal; // 此RadioButtonList物件的item排列方式是水平
+            rdblp[0].RepeatLayout = RepeatLayout.Table;
+
             //將片語陣列內的值逐一放置CheckBoxList物件的item內
             for (int j = 0; j < (Convert.ToInt32(phrase_item.Length) / 2); j++)
             {
-                chklp[0].Items.Add(phrase_item[0, j]); //建立CheckBoxList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
-                chklp[0].Items[j].Value = phrase_item[1, j]; //CheckBoxList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
-                chklp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
-                chklp[0].DataBind();
+                //chklp[0].Items.Add(phrase_item[0, j]); //建立CheckBoxList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
+                //chklp[0].Items[j].Value = phrase_item[1, j]; //CheckBoxList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
+                //chklp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
+                //chklp[0].DataBind();
+
+                rdblp[0].Items.Add(phrase_item[0, j]); //建立RadioButtonList物件的item與item顯示文字(此部分是用片語關鍵字來呈現…片語關鍵字是存在片語陣列的第一個行[index=0])
+                rdblp[0].Items[j].Value = phrase_item[1, j]; //RadioButtonList物件item 的值(此部分是用片語內容…片語內容是存在片語陣列的第二個行[index=1])
+                rdblp[0].Items[j].Attributes["title"] = phrase_item[1, j];//這是讓使用者移到這item時會顯示的hint(使用者看到關鍵字不見得知道其內容,因此這hint要顯示這關鍵字內的片語內容)
+                rdblp[0].DataBind();
             }
             tabid.Controls.Add(new LiteralControl("<" + "br" + ">"));
-            tabid.Controls.Add(chklp[0]); //把CheckBoxList物件建立在Tab內
+            tabid.Controls.Add(rdblp[0]); //把CheckBoxList物件建立在Tab內
             TabContainerPHRASE.Controls.Add(tabid); //把Tab放置在Tab的控制容器內
             TabContainerPHRASE.ActiveTabIndex = selectvalue; //顯示預設的Tab(可能Tab的控制容器內友好幾個Tab…要選定哪一個Tab為預設要顯示的Tab)
 
@@ -1970,34 +2009,48 @@ namespace longtermcare.IPBasic
         //現居地址同醫療機構地址
         protected void Button5_Click(object sender, EventArgs e)
         {
-            TextBox3.Text = SqlIPBasic.SearchHPInfo(Session["hp_name"].ToString().Trim());
+            //TextBox3.Text = SqlIPBasic.SearchHPInfo(Session["hp_name"].ToString().Trim());
+            TextBox3.Text = SqlIPBasic.SearchHPInfo(Session["hp_name"].ToString().Trim()); 
             Button1.Style["display"] = "none";
             TextBox3.Style["display"] = "inline";
             Panel1.Style["display"] = "none";
             Button2.Style["display"] = "inline";
         }
 
-        protected void TextBoxNO_TextChanged(object sender, EventArgs e)
+        //檢查住民編號是否存在
+        [System.Web.Services.WebMethod(EnableSession = true)]
+        public static string checkipno(string ipno)
         {
-            bool b = SqlIPBasic.CheckIPNO(TextBoxNO.Text.Trim());
+            string warning = "";
+            bool b = SqlIPBasic.CheckIPNO(ipno.Trim());
             if (b)
             {
-                lblShowErr.Text = "住民編號:" + TextBoxNO.Text + " 已存在！";
-                ScriptManager.RegisterClientScriptBlock(UpdatePanelErrMsg, typeof(UpdatePanel), "Message", "runEffect1();", true);
-                TextBoxNO.Text = "";
+                warning = "wrong";
             }
-            else
-            {
-                Label187.Text = "";
-                fupIPPic.Enabled = true;
-                //btnIPPicAdd.Enabled = true;
-                //btnIPPicDelete.Enabled = false;
-                this.txtIPName.Focus(); //預設焦點
-                btnIPPicAdd.Style["display"] = "inline";
-                disableAdd.Style["display"] = "none";
-            }
-
+            return warning;
         }
+
+        //protected void TextBoxNO_TextChanged(object sender, EventArgs e)
+        //{
+        //    bool b = SqlIPBasic.CheckIPNO(TextBoxNO.Text.Trim());
+        //    if (b)
+        //    {
+        //        lblShowErr.Text = "住民編號:" + TextBoxNO.Text + " 已存在！";
+        //        ScriptManager.RegisterClientScriptBlock(UpdatePanelErrMsg, typeof(UpdatePanel), "Message", "runEffect1();", true);
+        //        TextBoxNO.Text = "";
+        //    }
+        //    else
+        //    {
+        //        Label187.Text = "";
+        //        fupIPPic.Enabled = true;
+        //        //btnIPPicAdd.Enabled = true;
+        //        //btnIPPicDelete.Enabled = false;
+        //        this.txtIPName.Focus(); //預設焦點
+        //        btnIPPicAdd.Style["display"] = "inline";
+        //        disableAdd.Style["display"] = "none";
+        //    }
+
+        //}
 
         //Link到新增住民資料
         protected void LinkBtnGoToAddView_Click(object sender, EventArgs e)

@@ -251,10 +251,11 @@
             //選擇Checkbox選擇的值跑迴圈
             $('[id^="ContentPlaceHolder1_TabContainerPHRASE"]:checked').each(function () {
                 //字串=字串＋值
-                if (document.getElementById(id1).value == "" && text == "")
-                    text = $(this).val();
-                else
-                    text += " " + $(this).val();
+                if (document.getElementById(id1).value == "" && text == "") {
+                    text = $(this).val().replace("sc32","");
+                } else {
+                    text += " " + $(this).val().replace("sc32", "");
+                }
             });
             //跑完迴圈將值塞進TextBox中
             var b = document.getElementById(id1).value;
@@ -673,7 +674,7 @@
         <img alt='' border='0' onmouseover="this.src='/Image/WebImage/B2T.png'" src="/Image/WebImage/B2T_medium.png"
             onmouseout="this.src='/Image/WebImage/B2T_medium.png'" /></a>
     BACKtoTOP-STOP-->
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
     </asp:ScriptManager>
     <h1>
         <asp:Label ID="LabelTitle" runat="server" Text="住民基本資料" Font-Bold="True" Font-Size="X-Large"></asp:Label>
@@ -775,12 +776,13 @@
                                     <td bgcolor="#FFFFCC">
                                         <asp:Label ID="Label1" runat="server" Text="住民編號"></asp:Label>
                                         <span class="style18">*</span>
+                                        <asp:Label runat="server" ID="test"></asp:Label>
                                     </td>
                                     <td>
                                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                             <ContentTemplate>
-                                                <asp:TextBox ID="TextBoxNO" runat="server" OnTextChanged="TextBoxNO_TextChanged" TabIndex="1"
-                                                    AutoPostBack="True"></asp:TextBox>
+                                                <asp:TextBox ID="TextBoxNO" runat="server" TabIndex="1"
+                                                    AutoPostBack="False" onchange="javascript: TextBoxNO_TextChanged();" ></asp:TextBox>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                         <asp:Label ID="lblIPNO" runat="server" Visible="False"></asp:Label>
@@ -1011,6 +1013,7 @@
                                     </td>
                                 </tr>
                             </table>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
                             <br />
                             <asp:TabContainer ID="TabIPInfo" runat="server" ActiveTabIndex="1" Width="100%">
                                 <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="住民基本資料">
@@ -1067,7 +1070,7 @@
                                                         TargetControlID="txtCareerOther" WatermarkCssClass="TextboxWatermark" WatermarkText="職業參考表"
                                                         Enabled="True">
                                                     </asp:TextBoxWatermarkExtender>
-                                                    <asp:Button ID="btnJobDetail" runat="server" Text="補充說明" OnClick="btnJobDetail_Click" />
+                                                    <asp:Button ID="btnJobDetail" runat="server" Text="職業參考表" OnClick="btnJobDetail_Click" />
                                                 </td>
                                                 <td bgcolor="#FFFFCC" class="style32">
                                                     <asp:Label ID="Label47" runat="server" Text="宗教信仰"></asp:Label>
@@ -2294,6 +2297,7 @@
             var target = $("#" + target_id);
             var y_n = false;
             var selected_none = false;
+            var list = document.getElementById('<%= dropInsurance.ClientID%>').getElementsByTagName("input");
 
             $("#" + target_id + " td").each(function () {
                 if ($('#ContentPlaceHolder1_TabIPInfo_TabPanel1_dropInsurance_0').is(':checked')) {
@@ -2307,11 +2311,15 @@
                 //}
             });
 
-            //勾選"無"，關閉全部
+            //勾選"無"，取消全部勾選，勾選"無"以外，取消"無"的選取
             var list = document.getElementById('<%= dropInsurance.ClientID%>').getElementsByTagName("input");
             if (selected_none) {
                 for (var i = 1; i < list.length; i++) {
-                    $('#ContentPlaceHolder1_TabIPInfo_TabPanel1_dropInsurance_' + i).prop('checked', false);
+                    $('#ContentPlaceHolder1_TabIPInfo_TabPanel1_dropInsurance_' + i).removeAttr("checked");
+                    $('#ContentPlaceHolder1_TabIPInfo_TabPanel1_dropInsurance_'+i).click(function () {
+                        $('#ContentPlaceHolder1_TabIPInfo_TabPanel1_dropInsurance_' + i).prop("checked", true);
+                        $('#ContentPlaceHolder1_TabIPInfo_TabPanel1_dropInsurance_0').removeAttr("checked");
+                    });
                 }
                 $("#<%= txtInsuranceOther.ClientID %>").prop("disabled", true);
             } else {
@@ -2511,6 +2519,25 @@
         };
 
         $("#effect1").hide();
+
+        function TextBoxNO_TextChanged() {
+            var ipno = $('#<%= TextBoxNO.ClientID%>').val();
+            PageMethods.checkipno(ipno, checkipno_success, null);
+        }
+
+        function checkipno_success(result) {
+            if (result == "wrong") {
+                document.getElementById('<%= lblShowErr.ClientID%>').innerText = "住民編號:" + $('#<%= TextBoxNO.ClientID%>').val() + " 已存在！";
+                runEffect1();
+                document.getElementById('<%= TextBoxNO.ClientID%>').value="";
+            } else {
+                $('#<%= fupIPPic.ClientID%>').prop('disabled', false);
+                document.getElementById('<%= btnIPPicAdd.ClientID%>').style.display = 'inline';
+                document.getElementById('<%= disableAdd.ClientID%>').style.display = 'none';
+                $('#<%= txtIPName.ClientID%>').focus();
+            }
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content3" runat="server" ContentPlaceHolderID="head">
