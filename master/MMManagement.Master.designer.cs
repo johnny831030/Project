@@ -10,7 +10,7 @@
 namespace longtermcare {
     
     
-    public partial class Administration {
+    public partial class MMManagement {
         
         /// <summary>
         /// head 控制項。
