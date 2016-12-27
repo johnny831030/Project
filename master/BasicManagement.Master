@@ -78,7 +78,7 @@
                 text-align: center;
             }
 
-        .ui-widget-content1 {
+        .ui-widget-content3 {
             border: 1px solid #aaaaaa;
             background: #FF3333;
             color: #FFFFFF;
@@ -111,7 +111,7 @@
                                 <span class="button_d">
                                     <%-- 取消 onclick="Vietnamese_Click"--%>
                                     <asp:Button ID="Vietnamese" runat="server"
-                                        Text="越文版" class="groovybutton" OnClientClick="javascript: warning();"
+                                        Text="越文版" class="groovybutton" OnClick="Warning"
                                         CausesValidation="False" UseSubmitBehavior="False" /></span>
                             </span>
                         </a>&nbsp
@@ -123,7 +123,7 @@
                                 <span class="button_d">
                                     <%-- 取消 onclick="Tailand_Click"--%>
                                     <asp:Button ID="Tailand" runat="server"
-                                        Text="泰文版" class="groovybutton" OnClientClick="javascript: warning();"
+                                        Text="泰文版" class="groovybutton" OnClick="Warning"
                                         CausesValidation="False" UseSubmitBehavior="False" /></span>
                             </span>
                         </a>&nbsp
@@ -133,7 +133,7 @@
                                 <span class="button_c"></span>
                                 <span class="button_d">
                                     <%-- 取消 onclick="English_Click"--%>
-                                    <asp:Button ID="English" runat="server" OnClientClick="javascript: warning();"
+                                    <asp:Button ID="English" runat="server" OnClick="Warning"
                                         Text="英文版" class="groovybutton" CausesValidation="False"
                                         UseSubmitBehavior="False" /></span>
                             </span>
@@ -154,8 +154,8 @@
                                 <span class="button_c"></span>
                                 <span class="button_d">
                                     <%-- 取消 onclick="SChinese_Click"--%>
-                                    <asp:Button ID="SChinese" runat="server" Text="簡體中文"
-                                        class="groovybutton" OnClientClick="javascript: warning();" CausesValidation="False"
+                                    <asp:Button ID="SChinese" runat="server" Text="簡體中文" OnClick="Warning"
+                                        class="groovybutton" CausesValidation="False"
                                         UseSubmitBehavior="False" /></span>
                             </span>
                         </a>&nbsp;&nbsp;
@@ -344,18 +344,18 @@
         </div>
 
         <div class="toggler3">
-            <div id="effect3" class="ui-widget-content1">
+            <div id="effect3" class="ui-widget-content3">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <p>
-                            <asp:Label ID="lblShowErr" runat="server" Font-Bold="True" Font-Size="15px"></asp:Label>
+                            <asp:Label ID="ShowErr" runat="server" Font-Bold="True" Font-Size="15px"></asp:Label>
                         </p>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
         </div>
-    </form>
-    <script type="text/javascript">
+
+        <script type="text/javascript">
         setInterval("protectTimeOut()", 600000);
         function protectTimeOut() {
             document.getElementById('refresh').contentDocument.location.reload(true);
@@ -370,21 +370,16 @@
             });
             $("#Menu1 ul.level1").css("display", "block"); //"initial"
         });
-
-        function warning() {
-            document.getElementById('<%= lblShowErr.ClientID%>').innerText = "施工中，敬請見諒";
-            runEffect1();
-        }
-
-        function runEffect1() {
+            
+        function runEffect3() {
             // get effect type from 
             var selectedEffect = "drop";
             // run the effect
-            $("#effect3").show(selectedEffect, 0, callback1);
+            $("#effect3").show(selectedEffect, 0, callback3);
         };
 
         //callback function to bring a hidden box back
-        function callback1() {
+        function callback3() {
             setTimeout(function () {
                 $("#effect3:visible").removeAttr("style").fadeOut();
             }, 3000);
@@ -392,5 +387,8 @@
 
         $("#effect3").hide();
     </script>
+
+    </form>
+    
 </body>
 </html>

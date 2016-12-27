@@ -145,6 +145,12 @@ namespace longtermcare
             SqlMain.logout();
         }
 
+        protected void Warning(object sender,EventArgs e)
+        {
+            ShowErr.Text = "施工中，敬請見諒";
+            ScriptManager.RegisterStartupScript(Page, GetType(), "Warning", "runEffect2();", true);
+        }
+
         protected void English_Click(object sender, EventArgs e)
         {
             Session["language"] = "en";

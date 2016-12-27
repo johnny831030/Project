@@ -79,7 +79,7 @@
                 text-align: center;
             }
 
-        .ui-widget-content1 {
+        .ui-widget-content2 {
             border: 1px solid #aaaaaa;
             background: #FF3333;
             color: #FFFFFF;
@@ -114,7 +114,7 @@
                                 <span class="button_d">
                                     <%-- 取消 onclick="Vietnamese_Click"--%>
                                     <asp:Button ID="Vietnamese" runat="server"
-                                        Text="越文版" class="groovybutton" OnClientClick="javascript: warning();"
+                                        Text="越文版" class="groovybutton" OnClick="Warning"
                                         UseSubmitBehavior="False" /></span>
                             </span>
                         </a>&nbsp
@@ -126,7 +126,7 @@
                                 <span class="button_d">
                                     <%-- 取消 onclick="Tailand_Click"--%>
                                     <asp:Button ID="Tailand" runat="server"
-                                        Text="泰文版" class="groovybutton" OnClientClick="javascript: warning();"
+                                        Text="泰文版" class="groovybutton" OnClick="Warning"
                                         UseSubmitBehavior="False" /></span>
                             </span>
                         </a>&nbsp
@@ -136,7 +136,7 @@
                                 <span class="button_c"></span>
                                 <span class="button_d">
                                     <%-- 取消 onclick="English_Click"--%>
-                                    <asp:Button ID="English" runat="server" OnClientClick="javascript: warning();"
+                                    <asp:Button ID="English" runat="server" OnClick="Warning"
                                         Text="英文版" class="groovybutton" UseSubmitBehavior="False" /></span>
                             </span>
                         </a>&nbsp;
@@ -157,7 +157,7 @@
                                 <span class="button_d">
                                     <%-- 取消 onclick="SChinese_Click"--%>
                                     <asp:Button ID="SChinese" runat="server" Text="簡體中文"
-                                        class="groovybutton" OnClientClick="javascript: warning();" UseSubmitBehavior="False" /></span>
+                                        class="groovybutton" OnClick="Warning" UseSubmitBehavior="False" /></span>
                             </span>
                         </a>&nbsp;&nbsp;
                         <small>
@@ -346,54 +346,51 @@
         </div>
 
         <div class="toggler2">
-            <div id="effect2" class="ui-widget-content1">
+            <div id="effect2" class="ui-widget-content2">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <p>
-                            <asp:Label ID="lblShowErr" runat="server" Font-Bold="True" Font-Size="15px"></asp:Label>
+                            <asp:Label ID="ShowErr" runat="server" Font-Bold="True" Font-Size="15px"></asp:Label>
                         </p>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
         </div>
 
+        <script type="text/javascript">
+            setInterval("protectTimeOut()", 600000);
+            function protectTimeOut() {
+                document.getElementById('refresh').contentDocument.location.reload(true);
+            }
+            $(function () {
+                $('#top').click(function () {
+                    $('html,body').animate({ scrollTop: '0px' }, 500);
+                });
+
+                $('#ft').click(function () {
+                    $('html,body').animate({ scrollTop: $('#footer1').offset().top }, 500);
+                });
+                $("#Menu1 ul.level1").css("display", "block"); //"initial"
+            });
+
+            function runEffect2() {
+                // get effect type from 
+                var selectedEffect = "drop";
+                // run the effect
+                $("#effect2").show(selectedEffect, 0, callback2);
+            };
+
+            //callback function to bring a hidden box back
+            function callback2() {
+                setTimeout(function () {
+                    $("#effect2:visible").removeAttr("style").fadeOut();
+                }, 3000);
+            };
+
+            $("#effect2").hide();
+        </script>
+
     </form>
-    <script type="text/javascript">
-        setInterval("protectTimeOut()", 600000);
-        function protectTimeOut() {
-            document.getElementById('refresh').contentDocument.location.reload(true);
-        }
-        $(function () {
-            $('#top').click(function () {
-                $('html,body').animate({ scrollTop: '0px' }, 500);
-            });
-
-            $('#ft').click(function () {
-                $('html,body').animate({ scrollTop: $('#footer1').offset().top }, 500);
-            });
-            $("#Menu1 ul.level1").css("display", "block"); //"initial"
-        });
-
-        function warning() {
-            document.getElementById('<%= lblShowErr.ClientID%>').innerText = "施工中，敬請見諒";
-            runEffect1();
-        }
-
-        function runEffect1() {
-            // get effect type from 
-            var selectedEffect = "drop";
-            // run the effect
-            $("#effect2").show(selectedEffect, 0, callback1);
-        };
-
-        //callback function to bring a hidden box back
-        function callback1() {
-            setTimeout(function () {
-                $("#effect2:visible").removeAttr("style").fadeOut();
-            }, 3000);
-        };
-
-        $("#effect2").hide();
-    </script>
+    
 </body>
 </html>

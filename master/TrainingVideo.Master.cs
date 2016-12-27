@@ -274,6 +274,12 @@ namespace longtermcare
             }
         }
 
+        protected void Warning(object sender,EventArgs e)
+        {
+            ShowErr.Text = "施工中，敬請見諒";
+            ScriptManager.RegisterStartupScript(Page, GetType(), "warning", "runEffect2();", true);
+        }
+
         protected void English_Click(object sender, EventArgs e)
         {
             Session["language"] = "en";
